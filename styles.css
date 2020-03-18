@@ -7,3 +7,19 @@
     background-color: blue;
     width: 100%;
 }
+
+.searchBtn{
+    background-color: white;
+    color:black;
+    border-radius: 3px;
+    border-color: black;
+}
+
+.searchBtnClicked{
+    background-color: black;
+    color:whitesmoke;
+}
+
+.searchInput{
+    width:90%;
+}
