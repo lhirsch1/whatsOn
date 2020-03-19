@@ -17,15 +17,22 @@ $.ajax({
     // console.log(response)
 
     for (i = 0; i < 10; i++) {
-        $('#showdata').append(response[i].title + "<br>")
-        $('#showdata').append(response[i].showtimes[i].theatre.name + "<br>")
-        $('#showdata').append(response[i].showtimes[i].dateTime + "<br>")
+        
+        // var date = response[i].showtimes[i].dateTime.toString()
+        // console.log(new Date(date));
+
+        $('#showdata').append(response[i].title + "<br>");
+        $('#showdata').append(response[i].showtimes[i].theatre.name + "<br>");
+        $('#showdata').append(new Date(date) + "<br>");
         // console.log(response[i].showtimes) 
 
         // for (y = 0; y <10; y++) {
         // }
-        console.log(response[i].showtimes[i].theatre) //returns the theatres 
-        console.log(response[i].showtimes[i].dateTime) //returns actual showtime
+        // console.log(response[i].showtimes[i].theatre) //returns the theatres 
+        // console.log(response[i].showtimes[i].dateTime) //returns actual showtime
+    
+        
+        
     }
     
 //build an array of theater objects. it will have two key:value pairs. theater, and showtimes.
