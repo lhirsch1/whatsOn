@@ -8,6 +8,41 @@
     width: 100%;
 }
 
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    filter: invert(100%);
+}
+
+.modal-header  {
+    background-color: rgb(46, 122, 97);
+    color: white;
+}
+
+.modal-body  {
+    padding: 1rem 0 0 0;
+}
+
+.modalForm  {
+    
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.modalInputs  {
+    background-color: blue;
+    /* width: 70%; */
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.modal-footer  {
+    background-color: aquamarine;
+}
+
 .searchBtn{
     background-color: white;
     color:black;
@@ -23,3 +58,4 @@
 .searchInput{
     width:90%;
 }
+
