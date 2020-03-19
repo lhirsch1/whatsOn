@@ -10,20 +10,22 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+            <ul class="navbar-nav mr-auto">
+                <a class="navbar-brand" href="#">
+                    <img class="logo" src="WhatsOnLogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                    WhatsOn
+                </a>
+        <!-- <a class="navbar-brand" href="#">WhatsOn</a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
+               
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,11 +42,13 @@
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
             </ul>
-
+            <span class="nav-item">
+                <a class="nav-link" href="#myModal">User Preferences</a>
+            </span>
         </div>
     </nav>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Search Streaming Services</button>
-
+    <!-- Initial Search Modal -->
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -151,23 +155,14 @@
                 </div>
             </div>
       
-            <div class="inputs">
-              <form class="col-xs-12" id="inputs">
-                <label for="dateInput">Enter a date: </label>
-                <input type="date" placeholder="Date" name="dateInput" id="date">
-                <label for="zipCode">Enter your zip code: </label>
-                <input type="text" placeholder="zip code" name="zipCode" id="zipCode">
-                <label for="range">Enter the range to search (miles): </label>
-                <input type="text" placeholder="search range" name="range" id="searchRange">
-                <button class="btn" id="button">SEARCH</button>
-              </form>
+           
             </div>
             <div id="showdata"></div>
           </section>
           
       </main>
                
-          <!-- Bootstrap modal -->
+          <!-- User Preferences Modal -->
           <div class="modal" tabindex="-1" role="dialog" id="myModal">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -177,16 +172,32 @@
                 <div class="modal-body" id="modalBody">
                   <div class="modalInputs">
                     <div class="modalForm">
-                      <form class="col-xs-12" id="inputs">
-                        <label for="dateInput">Enter a date: </label>
-                        <input class="active" type="date" name="dateInput" id="date">
-                        <br />
-                        <label for="zipCode">Enter your zip code: </label>
-                        <input type="text" placeholder="zip code" name="zipCode" id="zipCode">
-                        <br />
-                        <label for="range">Enter search range (miles): </label>
-                        <input type="text" placeholder="search range" name="range" id="searchRange">
-                      </form>
+                        <div class="searchItem row">
+                            <div class="col-xs-12 col-sm-5 text-right">
+                                <label for="zipCode">Zip code:</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-7">
+                                <input type="text" placeholder="zip code" name="zipCode" id="zipCode">
+                            </div>
+                        </div>
+                        <div class="searchItem row">
+                            <div class="col-xs-12 col-sm-5 text-right">
+                                <label for="range">Search range (miles):</label>
+                            </div>
+                            <div class="col-xs-12 col-sm-7">
+                                <input type="text" placeholder="search range" name="range" id="searchRange">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-10 col-lg-12">
+                            <div class="searchInput">
+                                <span class="btn btn-sm searchBtn genreBtn" value="action">Action</span>
+                                <span class="btn btn-sm searchBtn genreBtn" value="comedy">Comedy</span>
+                                <span class="btn btn-sm searchBtn genreBtn" value="horror">Horror</span>
+                                <span class="btn btn-sm searchBtn genreBtn" value="drama">Drama</span>
+                                <span class="btn btn-sm searchBtn genreBtn" value="scifi">SciFi</span>
+                                <span class="btn btn-sm searchBtn genreBtn" value="family">Family</span>
+                            </div>
+                        </div>
                     </div>
                   </div>
                 </div>

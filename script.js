@@ -64,11 +64,9 @@ function openModal() {
 }
 
 function saveUserInfo(){
-  date = $('#date').val();
   zipCode = $('#zipCode').val();
   range = $('#searchRange').val();
-  console.log(date + "  " + zipCode + "  " +  range);
-  localStorage.setItem('date', date);
+  console.log(zipCode + "  " +  range);
   localStorage.setItem('zipCode', zipCode);
   localStorage.setItem('range', range);
 }

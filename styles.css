@@ -1,3 +1,7 @@
+a {
+   padding-bottom: 2px;
+}
+
 .red{
     background-color: red;
     width: 100%;
@@ -8,11 +12,6 @@
     width: 100%;
 }
 
-
-.carousel-control-next-icon,
-.carousel-control-prev-icon {
-    filter: invert(100%);
-}
 
 .modal-header  {
     background-color: rgb(46, 122, 97);
@@ -25,9 +24,9 @@
 
 .modalForm  {
     
-    width: 70%;
-    margin: 0 auto;
-    margin-bottom: 1rem;
+    /* width: 70%; */
+    /* margin: 0 auto;
+    margin-bottom: 1rem; */
     color: white;
 }
 
@@ -55,7 +54,7 @@
     color:whitesmoke;
 }
 
-.searchInput{
+/* .searchInput{
     width:90%;
-}
+} */
 
