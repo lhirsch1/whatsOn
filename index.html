@@ -126,6 +126,12 @@
             </div>
             </div>
             <div class="row">
+                <p class="userInfo">Enter you preferences to help focus your search:  <span>
+                    <button type="button" class="btn btn-primary" id="getUserInfo">Start</button>
+                </span></p>
+              </div>
+            </div>
+            <div class="row">
                 <div class="col-xs-12 red" id="recommendations1">
                     <p>Howdy</p>
                 </div>
@@ -145,21 +151,44 @@
                     <p>Howdy</p>
                 </div>
             </div>
-        </section>
-    </main>
+          </section>
+          
+          <!-- Bootstrap modal -->
+          <div class="modal" tabindex="-1" role="dialog" id="myModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title"></h5>
+                </div>
+                <div class="modal-body" id="modalBody">
+                  <div class="modalInputs">
+                    <div class="modalForm">
+                      <form class="col-xs-12" id="inputs">
+                        <label for="dateInput">Enter a date: </label>
+                        <input class="active" type="date" name="dateInput" id="date">
+                        <br />
+                        <label for="zipCode">Enter your zip code: </label>
+                        <input type="text" placeholder="zip code" name="zipCode" id="zipCode">
+                        <br />
+                        <label for="range">Enter search range (miles): </label>
+                        <input type="text" placeholder="search range" name="range" id="searchRange">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" id="saveButton" data-dismiss="modal">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <!-- non-slim jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      </main>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- pointer to the file with the javascript code -->
     <script src="script.js"></script>
 </body>
 
