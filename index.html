@@ -1,5 +1,4 @@
 <html lang="en"> 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -151,8 +150,23 @@
                     <p>Howdy</p>
                 </div>
             </div>
+      
+            <div class="inputs">
+              <form class="col-xs-12" id="inputs">
+                <label for="dateInput">Enter a date: </label>
+                <input type="date" placeholder="Date" name="dateInput" id="date">
+                <label for="zipCode">Enter your zip code: </label>
+                <input type="text" placeholder="zip code" name="zipCode" id="zipCode">
+                <label for="range">Enter the range to search (miles): </label>
+                <input type="text" placeholder="search range" name="range" id="searchRange">
+                <button class="btn" id="button">SEARCH</button>
+              </form>
+            </div>
+            <div id="showdata"></div>
           </section>
           
+      </main>
+               
           <!-- Bootstrap modal -->
           <div class="modal" tabindex="-1" role="dialog" id="myModal">
             <div class="modal-dialog" role="document">
@@ -183,12 +197,12 @@
             </div>
           </div>
 
-      </main>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- pointer to the file with the javascript code -->
+
     <script src="script.js"></script>
 </body>
 
