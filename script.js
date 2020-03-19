@@ -18,15 +18,18 @@ $.ajax({
 
     for (i = 0; i < 10; i++) {
         $('#showdata').append(response[i].title + "<br>")
+        $('#showdata').append(response[i].showtimes[i].theatre.name + "<br>")
+        $('#showdata').append(response[i].showtimes[i].dateTime + "<br>")
         // console.log(response[i].showtimes) 
 
-        for (y = 0; y <10; y++) {
-            $('#showdata').append(response[i].showtimes[])
-        }
+        // for (y = 0; y <10; y++) {
+        // }
+        console.log(response[i].showtimes[i].theatre) //returns the theatres 
+        console.log(response[i].showtimes[i].dateTime) //returns actual showtime
     }
-
     
-//build an array of theater objects. it will have to key:value pairs. theater, and showtimes.
+//build an array of theater objects. it will have two key:value pairs. theater, and showtimes.
+
 
 //populate 2 showtimes per theater
 
@@ -38,7 +41,7 @@ $.ajax({
 
 //else if not less than 2, then do nothing
 
-//bulid the theater objects array from 23
+//build the theater objects array from 23
 
 //in another loop OUSTIDE, iterate around theater object array and append.
 
