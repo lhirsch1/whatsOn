@@ -97,67 +97,24 @@
                     <span aria-hidden="true">&times;</span>
                   </button> -->
                 </div>
-                <div class="modal-body">
-                  <!-- insert carousel -->
-                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
-                    <ol class="carousel-indicators">
-                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                      <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
-                    </ol>
-                    <div class="carousel-inner">
-                      <!-- first carousel slide -->
-                      <div class="carousel-item active generalInfo">
-                        <!-- <img class="d-block w-100" src="..." alt="First slide"> -->
-                        <div class="inputs">
-                          <form class="col-xs-12" id="inputs">
-                            <label for="dateInput">Enter a date: </label>
-                            <input class="active" type="text" placeholder="Date" value="Date" name="dateInput" id="date">
-                            <br />
-                            <label for="zipCode">Enter your zip code: </label>
-                            <input type="text" placeholder="zip code" value="ZipCode" name="zipCode" id="zipCode">
-                            <br />
-                            <label for="range">Enter the range to search (miles): </label>
-                            <input type="text" placeholder="search range" value="Miles" name="range" id="searchRange">
-                            <button type="button" class="btn btn-primary" id="nextButton">Next</button>
-                          </form>
-                        </div>
-                      </div>
-                      <!-- second carousel slide -->
-                      <div class="carousel-item genrePicker">
-                        <!-- <img class="d-block w-100" src="..." alt="Second slide"> -->
-                        <h4>Pick Your Favorite Genres</h4>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="comedy">
-                          <label class="form-check-label" for="comedy">
-                            Comedy
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="drama">
-                          <label class="form-check-label" for="drama">
-                            Drama
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="action">
-                          <label class="form-check-label" for="action">
-                            Action
-                          </label>
-                        </div>
-                      </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
+                <div class="modal-body" id="modalBody">
+                  <div class="modalInputs">
+                    <div class="modalForm">
+                      <form class="col-xs-12" id="inputs">
+                        <label for="dateInput">Enter a date: </label>
+                        <input class="active" type="text" placeholder="Date" value="Date" name="dateInput" id="date">
+                        <br />
+                        <label for="zipCode">Enter your zip code: </label>
+                        <input type="text" placeholder="zip code" value="ZipCode" name="zipCode" id="zipCode">
+                        <br />
+                        <label for="range">Enter search range (miles): </label>
+                        <input type="text" placeholder="search range" value="Miles" name="range" id="searchRange">
+                      </form>
+                    </div>
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" id="saveButton" data-dismiss="modal">Save</button>
                 </div>
               </div>
             </div>
