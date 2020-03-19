@@ -8,6 +8,7 @@
     width: 100%;
 }
 
+
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
     filter: invert(100%);
@@ -41,3 +42,20 @@
 .modal-footer  {
     background-color: aquamarine;
 }
+
+.searchBtn{
+    background-color: white;
+    color:black;
+    border-radius: 3px;
+    border-color: black;
+}
+
+.searchBtnClicked{
+    background-color: black;
+    color:whitesmoke;
+}
+
+.searchInput{
+    width:90%;
+}
+
