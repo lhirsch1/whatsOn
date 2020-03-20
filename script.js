@@ -151,10 +151,9 @@ function assignClick(ListTitles){
             //   create a blank local array variable
             var services = [];
             // This for loop runs through the streaming services that movie has
-            for (i = 0; i < response.purchase_web_sources.length; i++) {
-                // console.log("full id ", response.purchase_web_sources[i].display_name)
+            for (i = 0; i < response.subscription_web_sources.length; i++) {
                 //   Those streaming services are added to the array
-                services.push(response.purchase_web_sources[i].display_name)
+                services.push(response.subscription_web_sources[i].display_name)
             }
             // create array containing all of the streaming services
             console.log("services ", services)
