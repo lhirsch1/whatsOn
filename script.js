@@ -10,7 +10,6 @@ var zipCode = $('#zipCode').val();
 var range = $('#searchRange').val();
 // console.log(date)
 var queryURLShowtimes = "https://data.tmsapi.com/v1.1/movies/showings?startDate=" + date +"&zip=" + zipCode + "&radius=" + range +"&api_key=92rsd8kpdrnkajvyvb42dkug";
-//HELLO!
 $.ajax({
     url: queryURLShowtimes,
     method: "GET"
@@ -62,27 +61,86 @@ $('#saveButton').on('click', function() {
 })
 
 
-// Current start of Chris's stuff
-// event listener that runs this function to get the service when the search button in clicked
+
+
+
+
+// CURRENT START OF CHRIS'S STUFF
+
+
+
+// This creates a GLOBAL blank array
+var FullArray=['']
+
+// event listener
+// When search button is clicked, the API is called and a list of titles matching the title the user inputted is pulled 
 $('#searchSubmitButton').on("click", function() {
+    // This Title variable is the user input
     var Title=$('#titleInput').val()
-    // console.log("title input ", Title)
-    // This is a temp URL for testing, the film is Termniator
-    // var titleURL = "https://api-public.guidebox.com/v2/search?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861&type=movie&field=title&query=Terminator"
-    // This code is the actual URL, and the title passed in will go in it
-    var titleURL="https://api-public.guidebox.com/v2/search?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861&type=movie&field=title&query=" + Title
-    // This API call gets the ID from the title
+    // This code is the actual URL, and the title the user inputted will go in it
+    var titleURL="https://api-public.guidebox.com/v2/search?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861&type=movie&query=" + Title +  "&field=title"
+    // This API call gets all matching titles and their ID numbers
     $.ajax({
         url: titleURL,
         method: 'GET'
     }).then(function (response) {
+        // This List Titles variable is made to hold each indicidual title, which are placed in it through a for loop
+        var ListTitles=[]
+        for (i=0; i<response.results.length; i++){
+            ListTitles.push(response.results[i].title)
+        }
 
-        // This gives the id number for the first one on the list
-        // console.log(response.results[0].id)
-        // return that title's ID number
-        return response.results[0].id;
+        // we set our global variable to our results, because we'll need them later,
+        FullArray=response.results
+        // and we call the renderTitles() function, passing in out list of titles
+        renderTitles(ListTitles)
+    })
+//This ends the event listener's callback function
+})
 
-    }).then(function (movieID) {
+// This function takes the list of titles, and renders them all to the page in the form of buttons
+function renderTitles(ListTitles){
+    
+    // first we empty the div, incase there's anything already there
+       $("#titleSelect").empty()
+    // then we create the titleButton variable, which we'll use to create a <button> element, "Button-Title" class, and add the List Titles through a for loop, and append these buttons
+   var titleButton;
+   for (i=0; i<ListTitles.length; i++){
+   titleButton=$("<button>")    
+   titleButton.attr("class", "Button-Title")
+   titleButton.text(ListTitles[i])
+   
+
+    $("#titleSelect").append(titleButton)
+   }
+
+//    Then we call the assignClick function, to ready a new event listeners to our new buttons. We also pass in the ListTitles again
+   assignClick(ListTitles);
+
+}
+
+// This assignClick function adds eventlisteners to the new buttons
+// The button clicked will indicate that is the EXACT title the user wants, so that button's text will be put into a variable, (SelectedTitle)
+// we will find the index of that title in regards to the full list of titles in ListTitles, (SelectedNumber),
+// then we'll call the getInfo() function, passing in the ID number, which we got from using the SelectedNumber on the global FullArray
+
+function assignClick(ListTitles){
+    $(".Button-Title").on("click", function(event) {
+        event.preventDefault()
+        console.log("the test is working ", $(this).text())
+    
+    var SelectedTitle=$(this).text()
+    var SelectedNumber=(ListTitles.indexOf(SelectedTitle))
+    
+    getInfo(FullArray[SelectedNumber].id);
+        
+    })
+    
+    }
+
+    // This function will call the API, using the desired film's ID Number, will create  "services" array whcih is a list of streaming services that stream the selected film,
+    // and it will call the renderServices function, passing in that list of services
+    function getInfo(movieID) {
         // this URL calls the api with the movie's ID, which returns more detailed info
         var serviceURL = "https://api-public.guidebox.com/v2/movies/" + movieID + "?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861"
 
@@ -100,15 +158,40 @@ $('#searchSubmitButton').on("click", function() {
             }
             // create array containing all of the streaming services
             console.log("services ", services)
-            //   That array is returned to whatever called it
-            return (services)
+            //   That array is sent to the render services function
+            renderServices(services)
         })
-    })
-})
+    }
 
-// A call for the getServices function, only used for testing
-// getServices();
-// Current end of Chris's stuff
+    // This function puts the streaming services on the screen
+    function renderServices(services) {
+
+        ListServices = ["This title is on: "]
+
+        for (i = 0; i < services.length; i++) {
+            ListServices.push(services[i])
+
+            if (i !== (services.length - 1)) {
+                ListServices.push(", ")
+            }
+        }
+        //  This empy function makes it so only one set of streaming services appears on screen at a time
+        $("#serviceList").empty()
+        //  This puts the streaming services on the page
+        $("#serviceList").append(ListServices)
+
+
+        // TODO have a different message if no streaming services are available
+    }
+
+
+
+
+// CURRENT END OF CHRIS'S STUFF
+
+
+
+
 
 var format = 'tvshow';
 var title = '';
