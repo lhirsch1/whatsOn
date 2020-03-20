@@ -26,7 +26,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                
-                <li class="nav-item dropdown">
+                <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dropdown
@@ -40,10 +40,10 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
+                </li> -->
             </ul>
             <span class="nav-item">
-                <a class="nav-link" href="#myModal">User Preferences</a>
+                <a class="nav-link" id="getUserInfo" href="#myModal">User Preferences</a>
             </span>
         </div>
     </nav>
@@ -128,11 +128,28 @@
                     <button id="searchButton">Search</button>
             </div>
             </div>
+            <div class="userdata">
+                <div class="row">
+                    <div class="col-xs-12" id="userZip">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12" id="userRange">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12" id="userGenres">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+                
             <div class="row">
-                <p class="userInfo">Enter you preferences to help focus your search:  <span>
-                    <button type="button" class="btn btn-primary" id="getUserInfo">Start</button>
-                </span></p>
-              </div>
+                <div class="col-xs-12 blue" id="recommendations4">
+                    <p>Howdy</p>
+                </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 red" id="recommendations1">
@@ -177,7 +194,7 @@
                                 <label for="zipCode">Zip code:</label>
                             </div>
                             <div class="col-xs-12 col-sm-7">
-                                <input type="text" placeholder="zip code" name="zipCode" id="zipCode">
+                                <input type="text" placeholder="Zip Code" name="zipCode" id="zipCode">
                             </div>
                         </div>
                         <div class="searchItem row">
