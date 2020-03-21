@@ -1,3 +1,19 @@
+// EVERYONES VARIABLE DECLARATIONS
+// Lukas' variables
+var format = 'tvshow';
+var title = '';
+var actor = '';
+var genreArray = [];
+var subscriptionArray = [];
+var genreContainer = $('.genreContainer');
+var genreString = "";
+var genreArray = []; 
+
+// John's variables
+var date = $('#date');
+var zipCode = $('#zipCode');
+var range = $('#searchRange');
+
 
 $('#button').on('click',function() {
     getShowtimes()
@@ -35,31 +51,139 @@ $.ajax({
 })
 }  
 
-var date = $('#date');
-var zipCode = $('#zipCode');
-var range = $('#searchRange');
+// START OF JOHN'S STUFF
+// Variables -> at the top
 
-function openModal() {
+
+// JOHN'S FUNCTIONS
+// Open the modal to get user preferences
+function openUserPrefsModal() {
   var modalTitle = $('.modal-title');
     modalTitle.text('Enter Your Preferences');
+    
     $('#myModal').modal('show');
 }
 
+//  Save the user info entered into the user prefs modal
 function saveUserInfo(){
-  date = $('#date').val();
   zipCode = $('#zipCode').val();
   range = $('#searchRange').val();
-  console.log(date + "  " + zipCode + "  " +  range);
-  localStorage.setItem('date', date);
-  localStorage.setItem('zipCode', zipCode);
-  localStorage.setItem('range', range);
+  console.log(zipCode + "  " +  range);
+  console.log('genreArray  ' + genreArray);
+  // only update local storage if something is entered
+  if(zipCode !== "") {
+      localStorage.setItem('zipCode', zipCode);
+  }  
+  if(range !== "") {
+      localStorage.setItem('range', range);
+  }  
+  if(genreArray.length !== 0) {
+      localStorage.setItem('genres', genreArray);
+  }
+  renderUserPrefs();    
 }
 
-$('#getUserInfo').on('click', openModal);
+// open user prefs modal if none are stored in local storage
+function checkUserPrefs() {
+    // check if local storage is empty (zipCode required)
+    if (localStorage.getItem("zipCode") === null) {
+        openUserPrefsModal();
+    } else{
+        // retrieve user prefs from local storage
+        zipCode = localStorage.getItem('zipCode');
+        userRange = localStorage.getItem('range');
+        parseGenreArray();
+        
+        // console.log("ls zip code:  " + zipCode);
+        // console.log("ls range:  " + range);
+        // console.log("ls genre string:  " + genreString);
+        // parse the string from local memory into array genreArray
+        // console.log(genreArray);
+        renderUserPrefs();
+    }
+}
+
+// set genreArray to the current preferences
+function parseGenreArray() {
+    // read in genres from local storage, save to string
+    genreString = localStorage.getItem('genres');
+    if(genreString === null) {
+        genreArray = [];
+    } else {
+        // convert the string from local storage into genreArray[
+        genreArray = genreString.split(",");
+        localStorage.setItem('genres', genreArray);
+    }
+    console.log(genreArray);
+    //place current user preferences into the modal
+    placeUserPrefs();
+}
+
+function placeUserPrefs() {
+    
+    zipCode = localStorage.getItem('zipCode');
+    $('#zipCode').attr('value', zipCode);
+    range = localStorage.getItem('range');
+    $('#searchRange').attr('value', range);
+    // TODO: set buttons for current genres active
+    // $(".genreBtn").click(function(){
+    //     if(clicked){
+    //         $(this).css('background-color', 'red');
+    //         clicked  = false;
+    //     } else {
+    //         $(this).css('background-color', 'blue');
+    //         clicked  = true;
+    //     }  
+    var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
+    for (let i=0; i<genreArray.length; i++) {
+         switch(genreArray[i]) {
+             case "Action":
+                $('#actionBtn').css({'background-color': 'black', "color": "white"});
+                break;
+            case "Comedy":
+                $('#comedyBtn').css({'background-color': 'black', "color": "white"});
+                break; 
+            case "Horror":
+                $('#horrorBtn').css({'background-color': 'black', "color": "white"});
+                break;
+            case "Drama":
+                $('#dramaBtn').css({'background-color': 'black', "color": "white"});
+                break;
+            case "SciFi":
+                $('#scifiBtn').css({'background-color': 'black', "color": "white"});
+                break;
+            case "Family":
+                $('#familyBtn').css({'background-color': 'black', "color": "white"});
+                break;
+         }
+    } 
+}
+
+ 
+
+function renderUserPrefs() {
+    // render current user preferences to the screen
+    $('#userZip').text('Your zip code is:  ' + zipCode);
+    $('#userRange').text('Your search range is:  ' + userRange);
+    $('#userGenres').text('Your favorite genres are:  ' + genreArray);
+    
+}
+
+//  END OF JOHN'S FUNCTIONS
+
+/////////    CODE TO RUN ON LOAD    //////
+parseGenreArray();
+checkUserPrefs();
+
+// JOHN'S EVENT LISTENERS
+// Open user prefs modal
+$('#getUserInfo').on('click', openUserPrefsModal);
+// Save user preferences 
 $('#saveButton').on('click', function() {
     saveUserInfo();
 })
-
+// END OF JOHN'S EVENT LISTENERS
+//  END OF JOHN'S STUFF
 
 
 
@@ -192,12 +316,7 @@ function assignClick(ListTitles){
 
 
 
-var format = 'tvshow';
-var title = '';
-var actor = '';
-var genreArray = [];
-var subscriptionArray = [];
-var genreContainer = $('.genreContainer');
+
 
 
 //function changes css of search buttons when clicked

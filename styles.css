@@ -1,3 +1,32 @@
+main {
+    background-color: #ffff00;
+}
+
+.navbar {
+    background-color: #4c4c4c;
+}
+
+a {
+   color: #fff;
+}
+
+.navbar-light .navbar-brand {
+    
+    color: #fff;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+    color: #fff;
+}
+
+.navbar-toggler, .button {
+    color: #fff;
+}
+
+a .nav-link {
+    color: #fff;
+}
+
 .red{
     background-color: red;
     width: 100%;
@@ -9,13 +38,8 @@
 }
 
 
-.carousel-control-next-icon,
-.carousel-control-prev-icon {
-    filter: invert(100%);
-}
-
 .modal-header  {
-    background-color: rgb(46, 122, 97);
+    background-color: #4c4c4c;
     color: white;
 }
 
@@ -25,22 +49,26 @@
 
 .modalForm  {
     
-    width: 70%;
-    margin: 0 auto;
-    margin-bottom: 1rem;
+    /* width: 70%; */
+    /* margin: 0 auto;
+    margin-bottom: 1rem; */
     color: white;
 }
 
 .modalInputs  {
-    background-color: blue;
+    background-color: rgb(228, 224, 29);
     /* width: 70%; */
     margin: 0 auto;
     margin-bottom: 1rem;
     color: white;
 }
 
-.modal-footer  {
-    background-color: aquamarine;
+.inputRow {
+    margin-left: 10px;
+}
+
+.modal-footer, .modalSearchButton   {
+    background-color: darkslategray;
 }
 
 .searchBtn{
@@ -55,7 +83,7 @@
     color:whitesmoke;
 }
 
-.searchInput{
+/* .searchInput{
     width:90%;
-}
+} */
 
