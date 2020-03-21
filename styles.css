@@ -1,5 +1,30 @@
+main {
+    background-color: #ffff00;
+}
+
+.navbar {
+    background-color: #4c4c4c;
+}
+
 a {
-   padding-bottom: 2px;
+   color: #fff;
+}
+
+.navbar-light .navbar-brand {
+    
+    color: #fff;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+    color: #fff;
+}
+
+.navbar-toggler, .button {
+    color: #fff;
+}
+
+a .nav-link {
+    color: #fff;
 }
 
 .red{
@@ -14,7 +39,7 @@ a {
 
 
 .modal-header  {
-    background-color: rgb(46, 122, 97);
+    background-color: #4c4c4c;
     color: white;
 }
 
@@ -31,7 +56,7 @@ a {
 }
 
 .modalInputs  {
-    background-color: blue;
+    background-color: rgb(228, 224, 29);
     /* width: 70%; */
     margin: 0 auto;
     margin-bottom: 1rem;
@@ -43,7 +68,7 @@ a {
 }
 
 .modal-footer, .modalSearchButton   {
-    background-color: aquamarine;
+    background-color: darkslategray;
 }
 
 .searchBtn{
