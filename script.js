@@ -192,6 +192,75 @@ $('#saveButton').on('click', function() {
 
 // CURRENT START OF CHRIS'S STUFF
 
+//  create a function called randomMovies()
+
+// call guidebox api and randomly select some movie IDs 
+
+// call each of those movie IDs and return one Netflix and one Hulu (and maybe one Disney +)
+
+function randomMovies(){
+    var randomID;
+    // 
+    // start first ajax
+    $.ajax({
+        url: "http://api-public.guidebox.com/v2/movies?limit=250&api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861" ,
+        method: 'GET'
+        // and first ajax and start first "then"
+    }).then(function (response) {
+       
+        var everyID=[];
+        for (i=0; i<response.results.length; i++){
+        // console.log("full list of small info ", response.results[i].id)
+            everyID.push(response.results[i].id)
+
+        }
+
+        // console.log("IDarray ", everyID)
+
+        // console.log("random number ", Math.floor(Math.random()*250))
+
+
+        randomID=everyID[Math.floor(Math.random()*250)]
+
+        // console.log("randomID ", randomID)
+
+
+        return randomID;
+
+        // End first "then" and start second "then"
+    }).then(function (randomID){
+
+        $.ajax({
+            url: "https://api-public.guidebox.com/v2/movies/" + randomID + "?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861",
+            method: 'GET'
+
+            // end secons ajax and start third "then"
+        }).then(function(response){
+
+            // TODO render this to the page
+            console.log("Full: ", response)
+             console.log("Title: ", response.title)
+            console.log("Year: ", response.release_year)
+            console.log("Plot: ", response.overview)
+            console.log("Image link: ", response.poster_120x171)
+            console.log("Services: ", response.subscription_web_sources)
+
+        //TODO make sure movies with NO services aren't returned
+        // TODO consider getting plot from OMDB instead
+        // TODO Consider forcing plot to be a word limit with ... if too long
+            
+
+            // end third "then"
+        })
+
+
+        // end second "then"
+    })
+
+// end function
+}
+
+randomMovies();
 
 
 // This creates a GLOBAL blank array
