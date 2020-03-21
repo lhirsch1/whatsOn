@@ -53,8 +53,8 @@
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <h1>Search</h1>
-                <form action="submit" class="searchForm container">
+                <h1 class="modal-header">Search</h1>
+                <form action="submit" class="searchForm container modalInputs">
 
                     <div class="searchItem row">
                         <div class="col-xs-12">
@@ -66,8 +66,8 @@
                     </div>
 
                     <div class="searchItem row">
-                        <div class="col-xs-12 col-sm-2">
-                            <label for="titleInput">Title</label>
+                        <div class="col-xs-12 text-sm-right col-sm-2 text-sm-left">
+                            <label for="titleInput">Title:</label>
                         </div>
                         <div class="col-xs-12 col-sm-10">
                             <input id="titleInput" class="searchInput" type="text">
@@ -76,8 +76,8 @@
                     </div>
 
                     <div class="searchItem row">
-                        <div class="col-xs-12 col-sm-2">
-                            <label for="actorInput">Actor</label>
+                        <div class="col-xs-12 text-sm-right col-sm-2 text-sm-left">
+                            <label for="actorInput">Actor:</label>
                         </div>
                         <div class="col-xs-12 col-sm-10">
                             <input id="actorInput" class="searchInput" type="text">
@@ -85,8 +85,8 @@
                     </div>
 
                     <div class="searchItem row genreContainer">
-                        <div class="col-xs-12 col-sm-2">
-                            Genre
+                        <div class="col-xs-12 text-sm-right col-sm-2 text-sm-left">
+                            Genre:
                         </div>
                         <div class="col-xs-12 col-sm-10">
                             <div class="searchInput">
@@ -101,19 +101,20 @@
                     </div>
 
                     <div class="searchItem row">
-                        <div class="col-xs-12 col-sm-2">
-                            Subscription
+                        <div class="col-xs-12 text-sm-right col-sm-2 text-sm-left">
+                            Service:
                         </div>
                         <div class="col-xs-12 col-sm-10">
                             <div class="searchInput">
                                 <span class="btn btn-sm searchBtn subscriptionBtn" value="netflix">Netflix</span>
                                 <span class="btn btn-sm searchBtn subscriptionBtn" value="huluPlus">Hulu Plus</span>
                                 <span class="btn btn-sm searchBtn subscriptionBtn" value="disneyPlus">Disney+</span>
+                                <span class="btn btn-sm searchBtn subscriptionBtn" value="amazonPrime">Amazon</span>
                             </div>
                         </div>
                     </div>
 
-                    <div>
+                    <div class="modalSearchButton">
                         <button id=searchSubmitButton>Search</button>
                     </div>
                 </form>
@@ -122,12 +123,6 @@
     </div>
     <main>
         <section class="container">
-            <div class="row">
-                <form class="col-xs-12" id="searchContainer blue">
-                    <input type="text" placeholder="searchbox" id="searchInput">
-                    <button id="searchButton">Search</button>
-            </div>
-            </div>
             <div class="userdata">
                 <div class="row">
                     <div class="col-xs-12" id="userZip">
@@ -183,47 +178,72 @@
           <div class="modal" tabindex="-1" role="dialog" id="myModal">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header mb-0">
                   <h5 class="modal-title"></h5>
                 </div>
+                <!-- start of modal body -->
                 <div class="modal-body" id="modalBody">
-                  <div class="modalInputs">
-                    <div class="modalForm">
-                        <div class="searchItem row">
-                            <div class="col-xs-12 col-sm-5 text-right">
-                                <label for="zipCode">Zip code:</label>
+                    <!-- start of .modalInputs -->
+                    <div class="modalInputs">
+                        <!-- start of .modalForm -->
+                        <div class="modalForm">
+                            <div class="searchItem row mt-0 pt-2 pl-2">
+                                <div class="col-xs-12 text-xs-left col-sm-5 text-sm-right">
+                                    <label for="zipCode">User Name:</label>
+                                </div>
+                                <div class="col-xs-12 col-sm-7">
+                                    <input type="text" placeholder="User Name" name="userName" id="userName">
+                                </div>
                             </div>
-                            <div class="col-xs-12 col-sm-7">
-                                <input type="text" placeholder="Zip Code" name="zipCode" id="zipCode">
+                            <div class="searchItem row pl-2">
+                                <div class="col-xs-12 text-xs-left col-sm-5 text-sm-right">
+                                    <label for="zipCode">Zip code:</label>
+                                </div>
+                                <div class="col-xs-12 col-sm-7">
+                                    <input type="text" placeholder="Zip Code" name="zipCode" id="zipCode">
+                                </div>
+                            </div>
+                            <div class="searchItem row pl-2">
+                                <div class="col-xs-12 text-xs-left col-sm-5 text-sm-right">
+                                    <label for="range">Search range (miles):</label>
+                                </div>
+                                <div class="col-xs-12 col-sm-7">
+                                    <input type="text" placeholder="search range" name="range" id="searchRange">
+                                </div>
+                            </div>
+                            <div class="inputRow">
+                                Genre:
+                            </div>
+                            <div class="inputRow pb-2">
+                                    <span class="btn btn-sm searchBtn genreBtn" value="action" id="actionBtn">Action</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="comedy" id="comedyBtn">Comedy</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="horror" id="horrorBtn">Horror</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="drama" id="dramaBtn">Drama</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="scifi" id="scifiBtn">SciFi</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="family" id="familyBtn">Family</span>
+                            </div>
+                            <div class="inputRow">
+                                Service:
+                            </div>
+                            <div class="inputRow mb-0 pb-2">
+                                <span class="btn btn-sm searchBtn serviceBtn" id="netflixBtn" value="netflix">Netflix</span>
+                                <span class="btn btn-sm searchBtn serviceBtn" id="huluBtn" value="hulu">Hulu Plus</span>
+                                <span class="btn btn-sm searchBtn serviceBtn" id="horrorBtn" value="disneyPlus">Disney+</span>
+                                <span class="btn btn-sm searchBtn serviceBtn" id="dramaBtn" value="amazonPrime">Amazon</span>
                             </div>
                         </div>
-                        <div class="searchItem row">
-                            <div class="col-xs-12 col-sm-5 text-right">
-                                <label for="range">Search range (miles):</label>
-                            </div>
-                            <div class="col-xs-12 col-sm-7">
-                                <input type="text" placeholder="search range" name="range" id="searchRange">
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-10 col-lg-12">
-                            <div class="searchInput">
-                                <span class="btn btn-sm searchBtn genreBtn" value="action">Action</span>
-                                <span class="btn btn-sm searchBtn genreBtn" value="comedy">Comedy</span>
-                                <span class="btn btn-sm searchBtn genreBtn" value="horror">Horror</span>
-                                <span class="btn btn-sm searchBtn genreBtn" value="drama">Drama</span>
-                                <span class="btn btn-sm searchBtn genreBtn" value="scifi">SciFi</span>
-                                <span class="btn btn-sm searchBtn genreBtn" value="family">Family</span>
-                            </div>
-                        </div>
+                        <!-- end of .modalForm -->
                     </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" id="saveButton" data-dismiss="modal">Save</button>
+                    <!-- end of modal-form -->
+                </div>  
+                <!-- end of modal body -->
+                <div class="modal-footer mt-0">
+                  <button type="button" class="btn btn-info" id="clearButton" data-dismiss="modal">Clear</button>
+                  <button type="button" class="btn btn-success" id="saveButton" data-dismiss="modal">Save</button>
                 </div>
               </div>
             </div>
-          </div>
+        </div>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

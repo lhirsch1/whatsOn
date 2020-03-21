@@ -143,15 +143,47 @@ function placeUserPrefs() {
     $('#zipCode').attr('value', zipCode);
     range = localStorage.getItem('range');
     $('#searchRange').attr('value', range);
-    
+    // TODO: set buttons for current genres active
+    // $(".genreBtn").click(function(){
+    //     if(clicked){
+    //         $(this).css('background-color', 'red');
+    //         clicked  = false;
+    //     } else {
+    //         $(this).css('background-color', 'blue');
+    //         clicked  = true;
+    //     }  
+    var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
+    for (let i=0; i<genreArray.length; i++) {
+         switch(genreArray[i]) {
+             case "Action":
+                $('#actionBtn').css({'background-color': 'black', "color": "white"});
+                break;
+            case "Comedy":
+                $('#comedyBtn').css({'background-color': 'black', "color": "white"});
+                break; 
+            case "Horror":
+                $('#horrorBtn').css({'background-color': 'black', "color": "white"});
+                break;
+            case "Drama":
+                $('#dramaBtn').css({'background-color': 'black', "color": "white"});
+                break;
+            case "SciFi":
+                $('#scifiBtn').css({'background-color': 'black', "color": "white"});
+                break;
+            case "Family":
+                $('#familyBtn').css({'background-color': 'black', "color": "white"});
+                break;
+         }
+    } 
 }
+
+ 
 
 function renderUserPrefs() {
     // render current user preferences to the screen
     $('#userZip').text('Your zip code is:  ' + zipCode);
     $('#userRange').text('Your search range is:  ' + userRange);
     $('#userGenres').text('Your favorite genres are:  ' + genreArray);
-    // TODO: set buttons for current genres active
     
 }
 

@@ -38,7 +38,11 @@ a {
     color: white;
 }
 
-.modal-footer  {
+.inputRow {
+    margin-left: 10px;
+}
+
+.modal-footer, .modalSearchButton   {
     background-color: aquamarine;
 }
 
