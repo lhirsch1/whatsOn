@@ -10,22 +10,24 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-expand navbar-light">
+            <ul class="navbar-nav mr-auto">
+                <a class="navbar-brand" href="#">
+                    <img class="logo" src="WhatsOnLogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                    WhatsOn
+                </a>
+        <!-- <a class="navbar-brand" href="#">WhatsOn</a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
+               
+                <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dropdown
@@ -39,20 +41,23 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
+                </li> -->
             </ul>
-
+            <span class="nav-item">
+                <a class="nav-link" id="getUserInfo" href="#myModal">User Preferences</a>
+            </span>
         </div>
     </nav>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Search
-        Streaming Services</button>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Search Streaming Services</button>
+    <!-- Initial Search Modal -->
 
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <h1>Search</h1>
-                <form action="submit" class="searchForm container">
+                <h1 class="modal-header">Search</h1>
+                <form action="submit" class="searchForm container modalInputs">
 
                     <div class="searchItem row">
                         <div class="col-xs-12">
@@ -65,8 +70,8 @@
                     </div>
 
                     <div class="searchItem row">
-                        <div class="col-xs-12 col-sm-2">
-                            <label for="titleInput">Title</label>
+                        <div class="col-xs-12 text-sm-right col-sm-2 text-sm-left">
+                            <label for="titleInput">Title:</label>
                         </div>
                         <div class="col-xs-12 col-sm-10">
                             <input id="titleInput" class="searchInput" type="text">
@@ -75,8 +80,8 @@
                     </div>
 
                     <div class="searchItem row">
-                        <div class="col-xs-12 col-sm-2">
-                            <label for="actorInput">Actor</label>
+                        <div class="col-xs-12 text-sm-right col-sm-2 text-sm-left">
+                            <label for="actorInput">Actor:</label>
                         </div>
                         <div class="col-xs-12 col-sm-10">
                             <input id="actorInput" class="searchInput" type="text">
@@ -84,8 +89,8 @@
                     </div>
 
                     <div class="searchItem row genreContainer">
-                        <div class="col-xs-12 col-sm-2">
-                            Genre
+                        <div class="col-xs-12 text-sm-right col-sm-2 text-sm-left">
+                            Genre:
                         </div>
                         <div class="col-xs-12 col-sm-10">
                             <div class="searchInput">
@@ -100,35 +105,60 @@
                     </div>
 
                     <div class="searchItem row">
-                        <div class="col-xs-12 col-sm-2">
-                            Subscription
+                        <div class="col-xs-12 text-sm-right col-sm-2 text-sm-left">
+                            Service:
                         </div>
                         <div class="col-xs-12 col-sm-10">
                             <div class="searchInput">
                                 <span class="btn btn-sm searchBtn subscriptionBtn" value="netflix">Netflix</span>
                                 <span class="btn btn-sm searchBtn subscriptionBtn" value="huluPlus">Hulu Plus</span>
                                 <span class="btn btn-sm searchBtn subscriptionBtn" value="disneyPlus">Disney+</span>
+                                <span class="btn btn-sm searchBtn subscriptionBtn" value="amazonPrime">Amazon</span>
                             </div>
                         </div>
                     </div>
 
-                    <div>
+                    <div class="modalSearchButton">
                         <button id=searchSubmitButton>Search</button>
                     </div>
+                            <!-- a possible temperorary div for placing the titles returned from the title search -->
+                            <div id="titleSelect"></div>
+                            <!-- a possibly temportary div for placing the streaming services returned from the ID search -->
+                            <div id="serviceList"></div>
                 </form>
             </div>
         </div>
     </div>
     <main>
         <section class="container">
-            
-            <div class="row">
-                <p class="userInfo">Enter you preferences to help focus your search: <span>
-                        <button type="button" class="btn btn-primary" id="getUserInfo">Start</button>
-                    </span></p>
+
+            <div class="userdata">
+                <div class="row">
+                    <div class="col-xs-12" id="userZip">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12" id="userRange">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12" id="userGenres">
+                        <p></p>
+                    </div>
+                </div>
+
             </div>
+                
+            <div class="row">
+
+                <div class="col-xs-12 blue" id="recommendations4">
+                    <p>Howdy</p>
+                </div>
             </div>
             <div class="row">
+
                 <div class="col-xs-12 red" id="recommendations1">
                     <div id="carouselExampleIndicators" class="carousel slide">
                         <ol class="carousel-indicators">
@@ -184,6 +214,7 @@
                 </div>
             </div>
 
+
             <div class="inputs">
                 <form class="col-xs-12" id="inputs">
                     <label for="dateInput">Enter a date: </label>
@@ -206,29 +237,86 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"></h5>
+
+      
+           
+
+               
+          <!-- User Preferences Modal -->
+          <div class="modal" tabindex="-1" role="dialog" id="myModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header mb-0">
+                  <h5 class="modal-title"></h5>
+
                 </div>
+                <!-- start of modal body -->
                 <div class="modal-body" id="modalBody">
+
+                    <!-- start of .modalInputs -->
                     <div class="modalInputs">
+                        <!-- start of .modalForm -->
                         <div class="modalForm">
-                            <form class="col-xs-12" id="inputs">
-                                <label for="dateInput">Enter a date: </label>
-                                <input class="active" type="date" name="dateInput" id="date">
-                                <br />
-                                <label for="zipCode">Enter your zip code: </label>
-                                <input type="text" placeholder="zip code" name="zipCode" id="zipCode">
-                                <br />
-                                <label for="range">Enter search range (miles): </label>
-                                <input type="text" placeholder="search range" name="range" id="searchRange">
-                            </form>
+                            <div class="searchItem row mt-0 pt-2 pl-2">
+                                <div class="col-xs-12 text-xs-left col-sm-5 text-sm-right">
+                                    <label for="zipCode">User Name:</label>
+                                </div>
+                                <div class="col-xs-12 col-sm-7">
+                                    <input type="text" placeholder="User Name" name="userName" id="userName">
+                                </div>
+                            </div>
+                            <div class="searchItem row pl-2">
+                                <div class="col-xs-12 text-xs-left col-sm-5 text-sm-right">
+                                    <label for="zipCode">Zip code:</label>
+                                </div>
+                                <div class="col-xs-12 col-sm-7">
+                                    <input type="text" placeholder="Zip Code" name="zipCode" id="zipCode">
+                                </div>
+                            </div>
+                            <div class="searchItem row pl-2">
+                                <div class="col-xs-12 text-xs-left col-sm-5 text-sm-right">
+                                    <label for="range">Search range (miles):</label>
+                                </div>
+                                <div class="col-xs-12 col-sm-7">
+                                    <input type="text" placeholder="search range" name="range" id="searchRange">
+                                </div>
+                            </div>
+                            <div class="inputRow">
+                                Genre:
+                            </div>
+                            <div class="inputRow pb-2">
+                                    <span class="btn btn-sm searchBtn genreBtn" value="action" id="actionBtn">Action</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="comedy" id="comedyBtn">Comedy</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="horror" id="horrorBtn">Horror</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="drama" id="dramaBtn">Drama</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="scifi" id="scifiBtn">SciFi</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="family" id="familyBtn">Family</span>
+                            </div>
+                            <div class="inputRow">
+                                Service:
+                            </div>
+                            <div class="inputRow mb-0 pb-2">
+                                <span class="btn btn-sm searchBtn serviceBtn" id="netflixBtn" value="netflix">Netflix</span>
+                                <span class="btn btn-sm searchBtn serviceBtn" id="huluBtn" value="hulu">Hulu Plus</span>
+                                <span class="btn btn-sm searchBtn serviceBtn" id="horrorBtn" value="disneyPlus">Disney+</span>
+                                <span class="btn btn-sm searchBtn serviceBtn" id="dramaBtn" value="amazonPrime">Amazon</span>
+                            </div>
                         </div>
+                        <!-- end of .modalForm -->
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="saveButton" data-dismiss="modal">Save</button>
+                    <!-- end of modal-form -->
+                </div>  
+                <!-- end of modal body -->
+                <div class="modal-footer mt-0">
+                  <button type="button" class="btn btn-info" id="clearButton" data-dismiss="modal">Clear</button>
+                  <button type="button" class="btn btn-success" id="saveButton" data-dismiss="modal">Save</button>
+
                 </div>
             </div>
         </div>
+
     </div>
+
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
