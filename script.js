@@ -178,7 +178,7 @@ checkUserPrefs();
 
 // JOHN'S EVENT LISTENERS
 // Open user prefs modal
-$('#getUserInfo').on('click', openUserPrefsModal);
+// $('#getUserInfo').on('click', openUserPrefsModal);
 // Save user preferences 
 $('#saveButton').on('click', function() {
     saveUserInfo();
@@ -197,9 +197,35 @@ $('#saveButton').on('click', function() {
 // This creates a GLOBAL blank array
 var FullArray=['']
 
-// event listener
+// event listener for STREAMING SEARCH
 // When search button is clicked, the API is called and a list of titles matching the title the user inputted is pulled 
 $('#searchSubmitButton').on("click", function() {
+    // This Title variable is the user input
+    var Title=$('#titleInput').val()
+    // This code is the actual URL, and the title the user inputted will go in it
+    var titleURL="https://api-public.guidebox.com/v2/search?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861&type=movie&query=" + Title +  "&field=title"
+    // This API call gets all matching titles and their ID numbers
+    $.ajax({
+        url: titleURL,
+        method: 'GET'
+    }).then(function (response) {
+        // This List Titles variable is made to hold each indicidual title, which are placed in it through a for loop
+        var ListTitles=[]
+        for (i=0; i<response.results.length; i++){
+            ListTitles.push(response.results[i].title)
+        }
+
+        // we set our global variable to our results, because we'll need them later,
+        FullArray=response.results
+        // and we call the renderTitles() function, passing in out list of titles
+        renderTitles(ListTitles)
+    })
+//This ends the event listener's callback function
+})
+
+// event listener for THEATER SEARCH
+// When search button is clicked, the API is called and a list of titles matching the title the user inputted is pulled 
+$('#theaterSearchButton').on("click", function() {
     // This Title variable is the user input
     var Title=$('#titleInput').val()
     // This code is the actual URL, and the title the user inputted will go in it
@@ -415,14 +441,13 @@ $('.subscriptionBtn').on('click', function () {
 })
 
 
-//search form submit button listener
-$('.searchForm').submit(function(e) {
-    e.preventDefault();
-    //holds user input for title and actor
-    //may have to put in lowercase for api
-    title = $('#titleInput').val();
-    actor = $('#actorInput').val();
-    console.log('format = '  + format + ' title = ' + title +  ' actor = ' + actor + ' genres = ' + genreArray + ' subscriptions = ' + subscriptionArray )
-});
-
+//search form submit button listener for STREAMING SEARCH
+// $('.searchForm').submit(function(e) {
+//     e.preventDefault();
+//     //holds user input for title and actor
+//     //may have to put in lowercase for api
+//     title = $('#titleInput').val();
+//     actor = $('#actorInput').val();
+//     console.log('format = '  + format + ' title = ' + title +  ' actor = ' + actor + ' genres = ' + genreArray + ' subscriptions = ' + subscriptionArray )
+// });
 
