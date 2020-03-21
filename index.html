@@ -139,51 +139,40 @@
                 
                     <div class="searchItem row">
                         <div class="col-xs-12 text-sm-right col-sm-3 text-sm-left">
-                            <label for="titleInput">Title:</label>
+                            <label for="dateInput">Enter a Date: </label>                        
                         </div>
                         <div class="col-xs-12 col-sm-9">
-                            <input id="titleInput" class="searchInput" type="text">
-                        </div>
+                            <input type="date" placeholder="Date" name="dateInput" id="date">                        </div>
 
                     </div>
 
                     <div class="searchItem row">
                         <div class="col-xs-12 text-sm-right col-sm-3 text-sm-left">
-                            <label for="actorInput">Actor:</label>
+                            <label for="zipCode">Zip Code: </label>
                         </div>
                         <div class="col-xs-12 col-sm-9">
-                            <input id="actorInput" class="searchInput" type="text">
+                            <input type="text" placeholder="zip code" name="zipCode" id="zipCode">
                         </div>
                     </div>
 
                     <div class="searchItem row">
                         <div class="col-xs-12 text-sm-right col-sm-3 text-sm-left">
-                            <label for="actorInput">Zip Code:</label>
-                        </div>
+                            <label for="range">Enter the range to search (miles): </label>                        </div>
                         <div class="col-xs-12 col-sm-9">
-                            <input id="actorInput" class="searchInput" type="text">
-                        </div>
+                            <input type="text" placeholder="search range" name="range" id="searchRange">                        </div>
                     </div>
 
-                    <div class="searchItem row">
-                        <div class="col-xs-12 text-sm-right col-sm-3 text-sm-left">
-                            <label for="actorInput">Search Range (miles):</label>
-                        </div>
-                        <div class="col-xs-12 col-sm-9">
-                            <input id="actorInput" class="searchInput" type="text">
-                        </div>
-                    </div>
 
                     <!-- Removed 'genre' and 'service' search options -->
                     <div class="modalSearchButton">
-                        <button id=theaterSearchButton>Search</button>
+                        <button id="button">Search</button>
                     </div>
                     <!-- a possible temperorary div for placing the titles returned from the title search -->
                     <div id="titleSelect"></div>
                     <!-- a possibly temportary div for placing the streaming services returned from the ID search -->
                     <div id="serviceList"></div>
                     <!-- This is where the theater search result will be rendered -->
-                    <!-- <div id="showdata"></div> -->
+                    <div id="showdata"></div>
                 </form>
             </div>
         </div>

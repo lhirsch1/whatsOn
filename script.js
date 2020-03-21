@@ -16,6 +16,7 @@ var range = $('#searchRange');
 
 
 $('#button').on('click',function() {
+    $('#showdata').empty()
     getShowtimes()
 });
 
@@ -34,19 +35,18 @@ $.ajax({
     // console.log(response)
 
     for (i = 0; i < 10; i++) {
-
+        
         var showtime = response[i].showtimes[i].dateTime;
-        console.log(new Date(showtime))
+        // console.log(new Date(showtime))
 
         $('#showdata').append(response[i].title + "<br>")
         $('#showdata').append(response[i].showtimes[i].theatre.name + "<br>")
         $('#showdata').append(new Date(showtime) + "<br>");
         // console.log(response[i].showtimes) 
 
-        // for (y = 0; y <10; y++) {
-        // }
-        console.log(response[i].showtimes[i].theatre) //returns the theatres 
-        console.log(new Date(date)) //returns actual showtime
+       
+        // console.log(response[i].showtimes[i].theatre) //returns the theatres 
+        // console.log(new Date(date)) //returns actual showtime
     }
     
 })
@@ -519,4 +519,3 @@ $('.subscriptionBtn').on('click', function () {
 //     actor = $('#actorInput').val();
 //     console.log('format = '  + format + ' title = ' + title +  ' actor = ' + actor + ' genres = ' + genreArray + ' subscriptions = ' + subscriptionArray )
 // });
-
