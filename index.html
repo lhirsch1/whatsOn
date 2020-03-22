@@ -139,40 +139,51 @@
                 
                     <div class="searchItem row">
                         <div class="col-xs-12 text-sm-right col-sm-3 text-sm-left">
-                            <label for="dateInput">Enter a Date: </label>                        
+                            <label for="titleInput">Title:</label>
                         </div>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="date" placeholder="Date" name="dateInput" id="date">                        </div>
+                            <input id="titleInput" class="searchInput" type="text">
+                        </div>
 
                     </div>
 
                     <div class="searchItem row">
                         <div class="col-xs-12 text-sm-right col-sm-3 text-sm-left">
-                            <label for="zipCode">Zip Code: </label>
+                            <label for="actorInput">Actor:</label>
                         </div>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" placeholder="zip code" name="zipCode" id="zipCode">
+                            <input id="actorInput" class="searchInput" type="text">
                         </div>
                     </div>
 
                     <div class="searchItem row">
                         <div class="col-xs-12 text-sm-right col-sm-3 text-sm-left">
-                            <label for="range">Enter the range to search (miles): </label>                        </div>
+                            <label for="actorInput">Zip Code:</label>
+                        </div>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" placeholder="search range" name="range" id="searchRange">                        </div>
+                            <input id="actorInput" class="searchInput" type="text">
+                        </div>
                     </div>
 
+                    <div class="searchItem row">
+                        <div class="col-xs-12 text-sm-right col-sm-3 text-sm-left">
+                            <label for="actorInput">Search Range (miles):</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-9">
+                            <input id="actorInput" class="searchInput" type="text">
+                        </div>
+                    </div>
 
                     <!-- Removed 'genre' and 'service' search options -->
                     <div class="modalSearchButton">
-                        <button id="button">Search</button>
+                        <button id=theaterSearchButton>Search</button>
                     </div>
                     <!-- a possible temperorary div for placing the titles returned from the title search -->
                     <div id="titleSelect"></div>
                     <!-- a possibly temportary div for placing the streaming services returned from the ID search -->
                     <div id="serviceList"></div>
                     <!-- This is where the theater search result will be rendered -->
-                    <div id="showdata"></div>
+                    <!-- <div id="showdata"></div> -->
                 </form>
             </div>
         </div>
@@ -224,10 +235,10 @@
                                     <img id ="randomImageOne" class="" src="http://static-api.guidebox.com/120214/thumbnails_movies_medium/44024-3294257154-3619373683-7974530933-medium-240x342-alt-.jpg" alt="First slide">
                                   </div>
                                   <div class="col-sm-9">
-                                      <h2 id="randomTitleOne">Batman (1989)</h2>
+                                      <h2 id="randomTitleOne">Loading...</h2>
                                       <br>
-                                      <p id="randomPlotOne">plot : The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joke</p>
-                                      <p id="randomServicesOne">services</p>
+                                      <p id="randomPlotOne">Plot: </p>
+                                      <p id="randomServicesOne">Services: </p>
                                   </div>
                               </div>
                           </div>
