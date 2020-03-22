@@ -214,7 +214,7 @@ function randomMovies(){
     // 
     // start first ajax
     $.ajax({
-        url: "https://api-public.guidebox.com/v2/movies?limit=250&api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861" ,
+        url: "https://api-public.guidebox.com/v2/movies?limit=250&api_key=3a2404e733d5da2c97335758c7babd525bf6ede0" ,
         method: 'GET'
         // and first ajax and start first "then"
     }).then(function (response) {
@@ -242,7 +242,7 @@ function randomMovies(){
     }).then(function (randomID){
 
         $.ajax({
-            url: "https://api-public.guidebox.com/v2/movies/" + randomID + "?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861",
+            url: "https://api-public.guidebox.com/v2/movies/" + randomID + "?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0",
             method: 'GET'
 
             // end secons ajax and start third "then"
@@ -326,7 +326,7 @@ $('#searchSubmitButton').on("click", function() {
     // This Title variable is the user input
     var Title=$('#titleInput').val()
     // This code is the actual URL, and the title the user inputted will go in it
-    var titleURL="https://api-public.guidebox.com/v2/search?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861&type=movie&query=" + Title +  "&field=title"
+    var titleURL="https://api-public.guidebox.com/v2/search?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0&type=movie&query=" + Title +  "&field=title"
     // This API call gets all matching titles and their ID numbers
     $.ajax({
         url: titleURL,
@@ -352,7 +352,7 @@ $('#theaterSearchButton').on("click", function() {
     // This Title variable is the user input
     var Title=$('#titleInput').val()
     // This code is the actual URL, and the title the user inputted will go in it
-    var titleURL="https://api-public.guidebox.com/v2/search?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861&type=movie&query=" + Title +  "&field=title"
+    var titleURL="https://api-public.guidebox.com/v2/search?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0&type=movie&query=" + Title +  "&field=title"
     // This API call gets all matching titles and their ID numbers
     $.ajax({
         url: titleURL,
@@ -416,7 +416,7 @@ function assignClick(ListTitles){
     // and it will call the renderServices function, passing in that list of services
     function getInfo(movieID) {
         // this URL calls the api with the movie's ID, which returns more detailed info
-        var serviceURL = "https://api-public.guidebox.com/v2/movies/" + movieID + "?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861"
+        var serviceURL = "https://api-public.guidebox.com/v2/movies/" + movieID + "?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0"
 
         $.ajax({
             url: serviceURL,
