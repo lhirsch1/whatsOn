@@ -126,7 +126,7 @@ function placeUserPrefs() {
     $('#zipCode').attr('value', zipCode);
     range = localStorage.getItem('range');
     $('#searchRange').attr('value', range);
-    // TODO: set buttons for current genres active
+    // set buttons for current genres active
     // $(".genreBtn").click(function(){
     //     if(clicked){
     //         $(this).css('background-color', 'red');
@@ -178,11 +178,16 @@ checkUserPrefs();
 
 // JOHN'S EVENT LISTENERS
 // Open user prefs modal
-// $('#getUserInfo').on('click', openUserPrefsModal);
+$('#getUserInfo').on('click', openUserPrefsModal);
 // Save user preferences 
 $('#saveButton').on('click', function() {
     saveUserInfo();
 })
+// Clear local storage
+$('#clearButton').on('click', function() {
+    localStorage.clear();
+})
+
 // END OF JOHN'S EVENT LISTENERS
 //  END OF JOHN'S STUFF
 
