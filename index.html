@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
-    <title>WhatsOn</title>
+    <title>whatsOn</title>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <ul class="navbar-nav mr-auto">
             <a class="navbar-brand" href="#">
                 <img class="logo" src="WhatsOnLogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-                WhatsOn
+                <span class="brandName"><em>whatsOn</em></span> 
             </a>
             <!-- <a class="navbar-brand" href="#">WhatsOn</a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -54,20 +54,16 @@
         </div>
     </nav>
 
-    <!-- STREAMING SEARCH BUTTON -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#streamingSearchModal">Search
-        Streaming Services</button>
-    <!-- THEATER SEARCH BUTTON -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#theaterModal">Search
-        Theaters</button>
+    
 
     <!--   STREAMING SEARCH MODAL -->
     <div id="streamingSearchModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <h1 class="modal-header">Search</h1>
-                
+                <h3 class="modal-header modalHeadFoot">Search</h3>
+                <!-- Modal inputs -->
+                <div class="modalInputs">
                     <div class="searchItem row">
                         <div class="col-xs-12 text-sm-right col-sm-2 text-sm-left">
                             <label for="titleInput">Title:</label>
@@ -87,7 +83,8 @@
                         </div>
                     </div>
 
-                    <div class="searchItem row genreContainer">
+                    <!-- Genre buttons in modal, not used at this time -->
+                    <!-- <div class="searchItem row genreContainer">
                         <div class="col-xs-12 text-sm-right col-sm-2 text-sm-left">
                             Genre:
                         </div>
@@ -101,7 +98,7 @@
                                 <span class="btn btn-sm searchBtn genreBtn" value="family">Family</span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="searchItem row">
                         <div class="col-xs-12 text-sm-right col-sm-2 text-sm-left">
@@ -116,15 +113,15 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="modalSearchButton">
-                        <button id=searchSubmitButton>Search</button>
-                    </div>
-                    <!-- a possible temperorary div for placing the titles returned from the title search -->
-                    <div id="titleSelect"></div>
-                    <!-- a possibly temportary div for placing the streaming services returned from the ID search -->
-                    <div id="serviceList"></div>
-                </form>
+                </div>
+                <div class="modalSearchButton modalHeadFoot">
+                    <button class="searchBtn" id=searchSubmitButton>Search</button>
+                </div>
+                <!-- a possible temperorary div for placing the titles returned from the title search -->
+                <div id="titleSelect"></div>
+                <!-- a possibly temportary div for placing the streaming services returned from the ID search -->
+                <div id="serviceList"></div>
+                
             </div>
         </div>
     </div>
@@ -135,48 +132,49 @@
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <h1 class="modal-header">Search Theaters</h1>
-                
+                <h3 class="modal-header modalHeadFoot">Search Theaters</h3>
+                <!-- Modal Inputs -->
+                <div class="modalInputs">
                     <div class="searchItem row">
-                        <div class="col-xs-12 text-sm-right col-sm-3 text-sm-left">
+                        <div class="col-xs-12 text-sm-right col-sm-5 text-sm-left">
                             <label for="titleInput">Title:</label>
                         </div>
-                        <div class="col-xs-12 col-sm-9">
+                        <div class="col-xs-12 col-sm-7">
                             <input id="titleInput" class="searchInput" type="text">
                         </div>
 
                     </div>
 
                     <div class="searchItem row">
-                        <div class="col-xs-12 text-sm-right col-sm-3 text-sm-left">
+                        <div class="col-xs-12 text-sm-right col-sm-5 text-sm-left">
                             <label for="actorInput">Actor:</label>
                         </div>
-                        <div class="col-xs-12 col-sm-9">
+                        <div class="col-xs-12 col-sm-7">
                             <input id="actorInput" class="searchInput" type="text">
                         </div>
                     </div>
 
                     <div class="searchItem row">
-                        <div class="col-xs-12 text-sm-right col-sm-3 text-sm-left">
+                        <div class="col-xs-12 text-sm-right col-sm-5 text-sm-left">
                             <label for="actorInput">Zip Code:</label>
                         </div>
-                        <div class="col-xs-12 col-sm-9">
+                        <div class="col-xs-12 col-sm-7">
                             <input id="actorInput" class="searchInput" type="text">
                         </div>
                     </div>
 
                     <div class="searchItem row">
-                        <div class="col-xs-12 text-sm-right col-sm-3 text-sm-left">
+                        <div class="col-xs-12 text-sm-right col-sm-5 text-sm-left">
                             <label for="actorInput">Search Range (miles):</label>
                         </div>
-                        <div class="col-xs-12 col-sm-9">
+                        <div class="col-xs-12 col-sm-7">
                             <input id="actorInput" class="searchInput" type="text">
                         </div>
                     </div>
-
+                </div>
                     <!-- Removed 'genre' and 'service' search options -->
-                    <div class="modalSearchButton">
-                        <button id=theaterSearchButton>Search</button>
+                    <div class="modalSearchButton modalHeadFoot">
+                        <button class="searchBtn" id=theaterSearchButton>Search</button>
                     </div>
                     <!-- a possible temperorary div for placing the titles returned from the title search -->
                     <div id="titleSelect"></div>
@@ -190,8 +188,94 @@
     </div>
     <!-- END OF THEATER SEARCH MODAL -->
 
+    <!-- USER PREFERENCES MODAL -->
+        <div class="modal" tabindex="-1" role="dialog" id="myModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                    <h3 class="modal-header modalHeadFoot">Enter Preferences</h3>
+                <!-- start of modal body -->
+                <div class="modal-body" id="modalBody">
+                    <!-- start of .modalInputs -->
+                    <div class="modalInputs">
+                        <!-- start of .modalForm -->
+                        <div class="modalForm">
+                            <div class="searchItem row mt-0 pt-2 pl-2">
+                                <div class="col-xs-12 text-xs-left col-sm-5 text-sm-right">
+                                    <label for="zipCode">User Name:</label>
+                                </div>
+                                <div class="col-xs-12 col-sm-7">
+                                    <input type="text" placeholder="User Name" name="userName" id="userName">
+                                </div>
+                            </div>
+                            <div class="searchItem row pl-2">
+                                <div class="col-xs-12 text-xs-left col-sm-5 text-sm-right">
+                                    <label for="zipCode">Zip code:</label>
+                                </div>
+                                <div class="col-xs-12 col-sm-7">
+                                    <input type="text" placeholder="Zip Code" name="zipCode" id="zipCode">
+                                </div>
+                            </div>
+                            <div class="searchItem row pl-2">
+                                <div class="col-xs-12 text-xs-left col-sm-5 text-sm-right">
+                                    <label for="range">Search range (miles):</label>
+                                </div>
+                                <div class="col-xs-12 col-sm-7">
+                                    <input type="text" placeholder="search range" name="range" id="searchRange">
+                                </div>
+                            </div>
+                            <!-- <div class="inputRow">
+                                Genre:
+                            </div>
+                            <div class="inputRow pb-2">
+                                    <span class="btn btn-sm searchBtn genreBtn" value="action" id="actionBtn">Action</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="comedy" id="comedyBtn">Comedy</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="horror" id="horrorBtn">Horror</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="drama" id="dramaBtn">Drama</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="scifi" id="scifiBtn">SciFi</span>
+                                    <span class="btn btn-sm searchBtn genreBtn" value="family" id="familyBtn">Family</span>
+                            </div> -->
+                            <div class="inputRow">
+                                <span id="servicesText">Services:</span> 
+                            </div>
+                            <div class="inputRow mb-0 pb-2">
+                                <span class="btn btn-sm searchBtn serviceBtn" id="netflixBtn" value="netflix">Netflix</span>
+                                <span class="btn btn-sm searchBtn serviceBtn" id="huluBtn" value="hulu">Hulu Plus</span>
+                                <span class="btn btn-sm searchBtn serviceBtn" id="horrorBtn" value="disneyPlus">Disney+</span>
+                                <span class="btn btn-sm searchBtn serviceBtn" id="dramaBtn" value="amazonPrime">Amazon</span>
+                            </div>
+                        </div>
+                        <!-- end of .modalForm -->
+                    </div>
+                    <!-- end of modal-form -->
+                </div>  
+                <!-- end of modal body -->
+                <div class="mt-0 pl-3 modalHeadFoot">
+                  <button type="button" class="btn btn-info" id="clearButton" data-dismiss="modal">Clear</button>
+                  <button type="button" class="btn btn-success" id="saveButton" data-dismiss="modal">Save</button>
+                </div>
+              </div>
+            </div>
+        </div>
+    <!-- END OF PREFERENCES MODAL -->
 
     <main>
+        <section class="opening">
+            <h2 class="greeting">Welcome to <em class="brandName">whatsOn</em></h2>
+            <!-- <hr /> -->
+            <div class="openingContent">
+                <p class="openingText"><em class="brandName">whatsOn</em> is here to help you find streaming content and movies in local theaters <em>fast!</em>  Providing your preferences makes searching even faster.  Update your preferences anytime.  You can start searching right away.</p>
+                <p class="openingText">Search for TV shows and movies on your streaming service here:</p>
+                <!-- STREAMING SEARCH BUTTON -->
+                <button type="button" class="btn btn-danger" data-toggle="modal"           data-target="#streamingSearchModal">Search
+                    Streaming Services
+                </button>
+                <p class="openingText">Search for movies at local theaters here:</p>
+                <!-- THEATER SEARCH BUTTON -->
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#theaterModal">Search
+                    Theaters
+                </button>
+            </div>
+        </section>
         <section class="container">
             <!-- John's get from local storage test
             <div class="userdata">
@@ -235,7 +319,7 @@
                                     <img id ="randomImageOne" class="" src="http://static-api.guidebox.com/120214/thumbnails_movies_medium/44024-3294257154-3619373683-7974530933-medium-240x342-alt-.jpg" alt="First slide">
                                   </div>
                                   <div class="col-sm-9">
-                                      <h2 id="randomTitleOne">Batman (1989)</h2>
+                                      <h3 id="randomTitleOne">Batman (1989)</h3>
                                       <br>
                                       <p id="randomPlotOne">plot : The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joke</p>
                                       <p id="randomServicesOne">services</p>
@@ -296,76 +380,6 @@
 
     </main>
 
-    <!-- User Preferences Modal -->
-    <div class="modal" tabindex="-1" role="dialog" id="myModal">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header mb-0">
-              <h5 class="modal-title"></h5>
-            </div>
-            <!-- start of modal body -->
-            <div class="modal-body" id="modalBody">
-                <!-- start of .modalInputs -->
-                <div class="modalInputs">
-                    <!-- start of .modalForm -->
-                    <div class="modalForm">
-                        <div class="searchItem row mt-0 pt-2 pl-2">
-                            <div class="col-xs-12 text-xs-left col-sm-5 text-sm-right">
-                                <label for="zipCode">User Name:</label>
-                            </div>
-                            <div class="col-xs-12 col-sm-7">
-                                <input type="text" placeholder="User Name" name="userName" id="userName">
-                            </div>
-                        </div>
-                        <div class="searchItem row pl-2">
-                            <div class="col-xs-12 text-xs-left col-sm-5 text-sm-right">
-                                <label for="zipCode">Zip code:</label>
-                            </div>
-                            <div class="col-xs-12 col-sm-7">
-                                <input type="text" placeholder="Zip Code" name="zipCode" id="zipCode">
-                            </div>
-                        </div>
-                        <div class="searchItem row pl-2">
-                            <div class="col-xs-12 text-xs-left col-sm-5 text-sm-right">
-                                <label for="range">Search range (miles):</label>
-                            </div>
-                            <div class="col-xs-12 col-sm-7">
-                                <input type="text" placeholder="search range" name="range" id="searchRange">
-                            </div>
-                        </div>
-                        <div class="inputRow">
-                            Genre:
-                        </div>
-                        <div class="inputRow pb-2">
-                                <span class="btn btn-sm searchBtn genreBtn" value="action" id="actionBtn">Action</span>
-                                <span class="btn btn-sm searchBtn genreBtn" value="comedy" id="comedyBtn">Comedy</span>
-                                <span class="btn btn-sm searchBtn genreBtn" value="horror" id="horrorBtn">Horror</span>
-                                <span class="btn btn-sm searchBtn genreBtn" value="drama" id="dramaBtn">Drama</span>
-                                <span class="btn btn-sm searchBtn genreBtn" value="scifi" id="scifiBtn">SciFi</span>
-                                <span class="btn btn-sm searchBtn genreBtn" value="family" id="familyBtn">Family</span>
-                        </div>
-                        <div class="inputRow">
-                            Service:
-                        </div>
-                        <div class="inputRow mb-0 pb-2">
-                            <span class="btn btn-sm searchBtn serviceBtn" id="netflixBtn" value="netflix">Netflix</span>
-                            <span class="btn btn-sm searchBtn serviceBtn" id="huluBtn" value="hulu">Hulu Plus</span>
-                            <span class="btn btn-sm searchBtn serviceBtn" id="horrorBtn" value="disneyPlus">Disney+</span>
-                            <span class="btn btn-sm searchBtn serviceBtn" id="dramaBtn" value="amazonPrime">Amazon</span>
-                        </div>
-                    </div>
-                    <!-- end of .modalForm -->
-                </div>
-                <!-- end of modal-form -->
-            </div>  
-            <!-- end of modal body -->
-            <div class="modal-footer mt-0">
-              <button type="button" class="btn btn-info" id="clearButton" data-dismiss="modal">Clear</button>
-              <button type="button" class="btn btn-success" id="saveButton" data-dismiss="modal">Save</button>
-            </div>
-          </div>
-        </div>
-    </div>
 
 
 

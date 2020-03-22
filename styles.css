@@ -2,29 +2,36 @@ main {
     background-color: #ffff00;
 }
 
-.navbar {
-    background-color: #4c4c4c;
+.opening {
+    background-color: rgb(148, 148, 148);
+    color: white;
+}
+.opening .greeting {
+    text-align: center;
+    border: 1px solid #454545;
+    line-height: 1.5;
+}
+
+.opening .openingContent {
+    padding-bottom: 1.4rem;
+}
+
+.opening .openingText {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 1.3rem;
+}
+
+.opening button {
+    margin-left: 50px;
+}
+
+.brandName {
+    color: red;
 }
 
 a {
-   color: #fff;
-}
-
-.navbar-light .navbar-brand {
-    
-    color: #fff;
-}
-
-.navbar-light .navbar-nav .active>.nav-link {
-    color: #fff;
-}
-
-.navbar-toggler, .button {
-    color: #fff;
-}
-
-a .nav-link {
-    color: #fff;
+   padding-bottom: 2px;
 }
 
 .red{
@@ -38,42 +45,53 @@ a .nav-link {
 }
 
 
-.modal-header  {
-    background-color: #4c4c4c;
+.modalHeadFoot  {
+    background-color: #454545;
     color: white;
+    margin-bottom: 0;
 }
 
 .modal-body  {
-    padding: 1rem 0 0 0;
+    padding: 0;
+}
+
+.modalInputs {
+    background-color: #ff0;
 }
 
 .modalForm  {
     
-    /* width: 70%; */
-    /* margin: 0 auto;
-    margin-bottom: 1rem; */
-    color: white;
+    margin: 0;
+    background-color: #ff0;     
+    color: black;
+    padding-bottom: 0;
 }
 
-.modalInputs  {
-    background-color: rgb(228, 224, 29);
-    /* width: 70%; */
+/* .modalInputs  {
+    background-color: blue;
+     width: 70%;
     margin: 0 auto;
     margin-bottom: 1rem;
     color: white;
-}
+}  */
 
 .inputRow {
     margin-left: 10px;
 }
 
 .modal-footer, .modalSearchButton   {
-    background-color: darkslategray;
+    /* background-color: aquamarine; */
+    padding-left: 15px;
+    color: white;
 }
 
-.searchBtn{
-    background-color: white;
-    color:black;
+/* #servicesText {
+    padding-left: 12px;
+} */
+
+span.searchBtn{
+    background-color: rgb(18, 148, 61);
+    color: white;
     border-radius: 3px;
     border-color: black;
 }
@@ -83,7 +101,7 @@ a .nav-link {
     color:whitesmoke;
 }
 
-.searchItem{
-    background-color: rgb(228, 224, 29)
-}
+/* .searchInput{
+    width:90%;
+} */
 
