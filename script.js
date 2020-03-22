@@ -16,7 +16,6 @@ var range = $('#searchRange');
 
 
 $('#button').on('click',function() {
-    $('#showdata').empty()
     getShowtimes()
 });
 
@@ -35,18 +34,19 @@ $.ajax({
     // console.log(response)
 
     for (i = 0; i < 10; i++) {
-        
+
         var showtime = response[i].showtimes[i].dateTime;
-        // console.log(new Date(showtime))
+        console.log(new Date(showtime))
 
         $('#showdata').append(response[i].title + "<br>")
         $('#showdata').append(response[i].showtimes[i].theatre.name + "<br>")
         $('#showdata').append(new Date(showtime) + "<br>");
         // console.log(response[i].showtimes) 
 
-       
-        // console.log(response[i].showtimes[i].theatre) //returns the theatres 
-        // console.log(new Date(date)) //returns actual showtime
+        // for (y = 0; y <10; y++) {
+        // }
+        console.log(response[i].showtimes[i].theatre) //returns the theatres 
+        console.log(new Date(date)) //returns actual showtime
     }
     
 })
@@ -192,18 +192,24 @@ $('#saveButton').on('click', function() {
 
 // CURRENT START OF CHRIS'S STUFF
 
+
+
 //  create a function called randomMovies()
 
 // call guidebox api and randomly select some movie IDs 
 
 // call each of those movie IDs and return one Netflix and one Hulu (and maybe one Disney +)
 
+// TODO do this to other two
+// TODO get a better placeholder image
 function randomMovies(){
     var randomID;
+
+
     // 
     // start first ajax
     $.ajax({
-        url: "http://api-public.guidebox.com/v2/movies?limit=250&api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861" ,
+        url: "https://api-public.guidebox.com/v2/movies?limit=250&api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861" ,
         method: 'GET'
         // and first ajax and start first "then"
     }).then(function (response) {
@@ -245,10 +251,51 @@ function randomMovies(){
             console.log("Image link: ", response.poster_120x171)
             console.log("Services: ", response.subscription_web_sources)
 
+            var serviceNames=[]
+
+            
+            if (response.subscription_web_sources.length===0){
+                $("#randomTitleOne").empty()
+
+                $("#randomTitleOne").append("Still Loading...")
+                console.log("Still Loading...")
+                randomMovies()
+
+            }
+            else{
+
+
+           
+            
+
+            for (i=0; i<response.subscription_web_sources.length; i++){
+
+                serviceNames.push(response.subscription_web_sources[i].display_name)
+                if (i<response.subscription_web_sources.length-1){
+                    serviceNames.push(", ")
+                }
+            }
+
+            console.log("All service names: ", serviceNames)
         //TODO make sure movies with NO services aren't returned
         // TODO consider getting plot from OMDB instead
         // TODO Consider forcing plot to be a word limit with ... if too long
             
+            $("#randomTitleOne").empty()
+            $("#randomPlotOne").empty()
+            $("#randomServicesOne").empty()
+
+
+            $("#randomTitleOne").append(response.title, " (",response.release_year, ")" )
+            
+            $("#randomPlotOne").append("Plot: ", response.overview)
+
+            $("#randomServicesOne").append("Services: ", serviceNames)
+
+            $("#randomImageOne").attr("src", response.poster_240x342)
+
+             }
+
 
             // end third "then"
         })
@@ -269,6 +316,8 @@ var FullArray=['']
 // event listener for STREAMING SEARCH
 // When search button is clicked, the API is called and a list of titles matching the title the user inputted is pulled 
 $('#searchSubmitButton').on("click", function() {
+            //  This empy function makes it so only one set of streaming services appears on screen at a time
+            $("#serviceList").empty()
     // This Title variable is the user input
     var Title=$('#titleInput').val()
     // This code is the actual URL, and the title the user inputted will go in it
@@ -397,6 +446,12 @@ function assignClick(ListTitles){
         //  This empy function makes it so only one set of streaming services appears on screen at a time
         $("#serviceList").empty()
         //  This puts the streaming services on the page
+
+        if (services.length===0){
+
+            ListServices="This title is currently not on any known streaming service."
+        }
+        
         $("#serviceList").append(ListServices)
 
 
