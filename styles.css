@@ -87,3 +87,15 @@ a .nav-link {
     background-color: rgb(228, 224, 29)
 }
 
+.theaterDisplay {
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: darkslategray;
+    color: white;
+}
+
+.modal-content {
+    background-color: darkslategray;
+}
+
