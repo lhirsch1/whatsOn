@@ -3,6 +3,7 @@ main {
     position: relative;
 }
 
+
 #getUserInfo {
     color: #ffff00;
     right: 10px;
@@ -22,10 +23,27 @@ main {
     padding-bottom: 1.4rem;
 }
 
+
+.opening {
+    background-color: rgb(148, 148, 148);
+    color: white;
+}
+.opening .greeting {
+    text-align: center;
+    border: 1px solid #454545;
+    line-height: 1.5;
+}
+
+.opening .openingContent {
+    padding-bottom: 1.4rem;
+}
+
+
 .opening .openingText {
     width: 90%;
     margin: 0 auto;
     font-size: 1.3rem;
+
 }
 
 .opening button {
@@ -49,6 +67,18 @@ main {
     padding-right: 15px;
 } */
 
+
+}
+
+.opening button {
+    margin-left: 50px;
+}
+
+.brandName {
+    color: red;
+}
+
+
 a {
    padding-bottom: 2px;
 }
@@ -65,7 +95,9 @@ a {
 
 
 .modalHeadFoot  {
+
     background-color: #343a40;
+
     color: white;
     margin-bottom: 0;
 }
@@ -75,6 +107,7 @@ a {
 }
 
 .modalInputs {
+
     background-color: #ffff00;
     padding: 6px 0 6px 0;
 }
@@ -82,6 +115,7 @@ a {
 .modalForm  {
     
     margin: 0;
+
     background-color: #ffff00;     
     color: black;
     padding-bottom: 0;
@@ -101,6 +135,7 @@ a {
 
 .modal-footer, .modalSearchButton   {
     /* background-color: aquamarine; */
+
     color: white;
     padding: 6px 15px 6px 15px;
 }
@@ -110,7 +145,9 @@ a {
 } */
 
 span.searchBtn{
+
     background-color: rgb(148, 148, 148);
+
     color: white;
     border-radius: 3px;
     border-color: black;

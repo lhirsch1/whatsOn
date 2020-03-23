@@ -148,6 +148,7 @@ function placeUserPrefs() {
     $('#zipCode').attr('value', zipCode);
     range = localStorage.getItem('range');
     $('#searchRange').attr('value', range);
+
     // for turning genreButtons to black to indicate they are already in user preferences
     // var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
     // for (let i = 0; i < genreArray.length; i++) {
@@ -179,6 +180,28 @@ function placeUserPrefs() {
         switch (servicesArray[i]) {
             case "Netflix":
                 $('#netflixBtn').css({ 'background-color': 'black', "color": "white" });
+
+    // set buttons for current genres active
+    // $(".genreBtn").click(function(){
+    //     if(clicked){
+    //         $(this).css('background-color', 'red');
+    //         clicked  = false;
+    //     } else {
+    //         $(this).css('background-color', 'blue');
+    //         clicked  = true;
+    //     }  
+    var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
+    for (let i=0; i<genreArray.length; i++) {
+         switch(genreArray[i]) {
+             case "Action":
+                $('#actionBtn').css({'background-color': 'black', "color": "white"});
+                break;
+            case "Comedy":
+                $('#comedyBtn').css({'background-color': 'black', "color": "white"});
+                break; 
+            case "Horror":
+                $('#horrorBtn').css({'background-color': 'black', "color": "white"});
+
                 break;
             case "Hulu Plus":
                 $('#huluBtn').css({ 'background-color': 'black', "color": "white" });
@@ -220,9 +243,10 @@ $('#saveButton').on('click', saveUserInfo);
 $('#clearButton').on('click', function () {
     localStorage.clear();
 })
-// collect clicks from service choices
-$('#servicesInput').on('click', $('.serviceBtn'), function () {
-    console.log('service button click');
+
+// Clear local storage
+$('#clearButton').on('click', function() {
+    localStorage.clear();
 })
 
 // END OF JOHN'S EVENT LISTENERS
@@ -234,18 +258,28 @@ $('#servicesInput').on('click', $('.serviceBtn'), function () {
 
 // CURRENT START OF CHRIS'S STUFF
 
+
+
 //  create a function called randomMovies()
 
 // call guidebox api and randomly select some movie IDs 
 
 // call each of those movie IDs and return one Netflix and one Hulu (and maybe one Disney +)
 
-function randomMovies() {
+
+// TODO do this to other two
+// TODO get a better placeholder image
+function randomMovies(){
+
     var randomID;
+
+
     // 
     // start first ajax
     $.ajax({
-        url: "http://api-public.guidebox.com/v2/movies?limit=250&api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861",
+
+        url: "https://api-public.guidebox.com/v2/movies?limit=250&api_key=3a2404e733d5da2c97335758c7babd525bf6ede0" ,
+
         method: 'GET'
         // and first ajax and start first "then"
     }).then(function (response) {
@@ -273,7 +307,7 @@ function randomMovies() {
     }).then(function (randomID) {
 
         $.ajax({
-            url: "https://api-public.guidebox.com/v2/movies/" + randomID + "?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861",
+            url: "https://api-public.guidebox.com/v2/movies/" + randomID + "?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0",
             method: 'GET'
 
             // end secons ajax and start third "then"
@@ -287,9 +321,56 @@ function randomMovies() {
             console.log("Image link: ", response.poster_120x171)
             console.log("Services: ", response.subscription_web_sources)
 
+
             //TODO make sure movies with NO services aren't returned
             // TODO consider getting plot from OMDB instead
             // TODO Consider forcing plot to be a word limit with ... if too long
+
+            var serviceNames=[]
+
+            
+            if (response.subscription_web_sources.length===0){
+                $("#randomTitleOne").empty()
+
+                $("#randomTitleOne").append("Still Loading...")
+                console.log("Still Loading...")
+                randomMovies()
+
+            }
+            else{
+
+
+           
+            
+
+            for (i=0; i<response.subscription_web_sources.length; i++){
+
+                serviceNames.push(response.subscription_web_sources[i].display_name)
+                if (i<response.subscription_web_sources.length-1){
+                    serviceNames.push(", ")
+                }
+            }
+
+            console.log("All service names: ", serviceNames)
+        //TODO make sure movies with NO services aren't returned
+        // TODO consider getting plot from OMDB instead
+        // TODO Consider forcing plot to be a word limit with ... if too long
+            
+            $("#randomTitleOne").empty()
+            $("#randomPlotOne").empty()
+            $("#randomServicesOne").empty()
+
+
+            $("#randomTitleOne").append(response.title, " (",response.release_year, ")" )
+            
+            $("#randomPlotOne").append("Plot: ", response.overview)
+
+            $("#randomServicesOne").append("Services: ", serviceNames)
+
+            $("#randomImageOne").attr("src", response.poster_240x342)
+
+             }
+
 
 
             // end third "then"
@@ -310,11 +391,17 @@ var FullArray = ['']
 
 // event listener for STREAMING SEARCH
 // When search button is clicked, the API is called and a list of titles matching the title the user inputted is pulled 
-$('#searchSubmitButton').on("click", function () {
+
+$('#searchSubmitButton').on("click", function() {
+            //  This empy function makes it so only one set of streaming services appears on screen at a time
+            $("#serviceList").empty()
+
     // This Title variable is the user input
     var Title = $('#titleInput').val()
     // This code is the actual URL, and the title the user inputted will go in it
-    var titleURL = "https://api-public.guidebox.com/v2/search?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861&type=movie&query=" + Title + "&field=title"
+
+    var titleURL="https://api-public.guidebox.com/v2/search?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0&type=movie&query=" + Title +  "&field=title"
+
     // This API call gets all matching titles and their ID numbers
     $.ajax({
         url: titleURL,
@@ -336,11 +423,13 @@ $('#searchSubmitButton').on("click", function () {
 
 // event listener for THEATER SEARCH
 // When search button is clicked, the API is called and a list of titles matching the title the user inputted is pulled 
-$('#theaterSearchButton').on("click", function () {
+$('#searchSubmitButton').on("click", function () {
     // This Title variable is the user input
     var Title = $('#titleInput').val()
     // This code is the actual URL, and the title the user inputted will go in it
-    var titleURL = "https://api-public.guidebox.com/v2/search?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861&type=movie&query=" + Title + "&field=title"
+
+    var titleURL="https://api-public.guidebox.com/v2/search?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0&type=movie&query=" + Title +  "&field=title"
+
     // This API call gets all matching titles and their ID numbers
     $.ajax({
         url: titleURL,
@@ -391,8 +480,16 @@ function assignClick(ListTitles) {
         event.preventDefault()
         console.log("the test is working ", $(this).text())
 
+
         var SelectedTitle = $(this).text()
         var SelectedNumber = (ListTitles.indexOf(SelectedTitle))
+
+    // This function will call the API, using the desired film's ID Number, will create  "services" array whcih is a list of streaming services that stream the selected film,
+    // and it will call the renderServices function, passing in that list of services
+    function getInfo(movieID) {
+        // this URL calls the api with the movie's ID, which returns more detailed info
+        var serviceURL = "https://api-public.guidebox.com/v2/movies/" + movieID + "?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0"
+
 
         getInfo(FullArray[SelectedNumber].id);
 
@@ -417,12 +514,25 @@ function getInfo(movieID) {
             //   Those streaming services are added to the array
             services.push(response.subscription_web_sources[i].display_name)
         }
+
         // create array containing all of the streaming services
         console.log("services ", services)
         //   That array is sent to the render services function
         renderServices(services)
     })
 }
+
+        //  This empy function makes it so only one set of streaming services appears on screen at a time
+        $("#serviceList").empty()
+        //  This puts the streaming services on the page
+
+        if (services.length===0){
+
+            ListServices="This title is currently not on any known streaming service."
+        }
+        
+        $("#serviceList").append(ListServices)
+
 
 // This function puts the streaming services on the screen
 function renderServices(services) {
@@ -561,4 +671,3 @@ $('.subscriptionBtn').on('click', function () {
 //     actor = $('#actorInput').val();
 //     console.log('format = '  + format + ' title = ' + title +  ' actor = ' + actor + ' genres = ' + genreArray + ' subscriptions = ' + subscriptionArray )
 // });
-
