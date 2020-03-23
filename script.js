@@ -3,7 +3,7 @@
 var format = 'tvshow';
 var title = '';
 var actor = '';
-var subscriptionArray = [];
+var subscriptionArray = ['Netflix', 'Hulu'];
 var genreContainer = $('.genreContainer');
 var servicesString = "";
 // var genreString = "";
@@ -46,7 +46,7 @@ function getShowtimes() {
             $('#showdata').append(new Date(showtime) + "<br>");
             // console.log(response[i].showtimes) 
 
-           
+
             // console.log(response[i].showtimes[i].theatre) //returns the theatres 
             // console.log(new Date(date)) //returns actual showtime
         }
@@ -65,7 +65,7 @@ function openUserPrefsModal() {
 
 //  Save the user info entered into the user prefs modal
 function saveUserInfo() {
-
+    console.log(subscriptionArray);
     userName = $('#userName').val();
     zipCode = $('#zipCode').val();
     range = $('#searchRange').val();
@@ -170,49 +170,49 @@ function placeUserPrefs() {
     //             break;
     //     }
     // }
-    
+
     // make services buttons in modals appear clicked if they are in user preferences
     var servicesBtns = ["Netflix", "Hulu Plus", "Disney+", "Amazon"];
-    for (let i = 0; i < servicesArray.length; i++) {
-        switch (servicesArray[i]) {     
-            case "Netflix":
-                $('#netflixBtn').css({ 'background-color': 'black', "color": "white" });
+    // for (let i = 0; i < servicesArray.length; i++) {
+    //     switch (servicesArray[i]) {     
+    //         case "Netflix":
+    //             $('#netflixBtn').css({ 'background-color': 'black', "color": "white" });
 
-            // set buttons for current genres active
-            // $(".genreBtn").click(function(){
-            //     if(clicked){
-            //         $(this).css('background-color', 'red');
-            //         clicked  = false;
-            //     } else {
-            //         $(this).css('background-color', 'blue');
-            //         clicked  = true;
-            //     }  
-            var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
-            for (let i=0; i<genreArray.length; i++) {
-                switch(genreArray[i]) {
-                    case "Action":
-                        $('#actionBtn').css({'background-color': 'black', "color": "white"});
-                        break;
-                    case "Comedy":
-                        $('#comedyBtn').css({'background-color': 'black', "color": "white"});
-                        break; 
-                    case "Horror":
-                        $('#horrorBtn').css({'background-color': 'black', "color": "white"});
+    //         // set buttons for current genres active
+    //         // $(".genreBtn").click(function(){
+    //         //     if(clicked){
+    //         //         $(this).css('background-color', 'red');
+    //         //         clicked  = false;
+    //         //     } else {
+    //         //         $(this).css('background-color', 'blue');
+    //         //         clicked  = true;
+    //         //     }  
+    //         var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
+    //         for (let i=0; i<genreArray.length; i++) {
+    //             switch(genreArray[i]) {
+    //                 case "Action":
+    //                     $('#actionBtn').css({'background-color': 'black', "color": "white"});
+    //                     break;
+    //                 case "Comedy":
+    //                     $('#comedyBtn').css({'background-color': 'black', "color": "white"});
+    //                     break; 
+    //                 case "Horror":
+    //                     $('#horrorBtn').css({'background-color': 'black', "color": "white"});
 
-                        break;
-                    case "Hulu Plus":
-                        $('#huluBtn').css({ 'background-color': 'black', "color": "white" });
-                        break;
-                    case "Disney+":
-                        $('#disneyBtn').css({ 'background-color': 'black', "color": "white" });
-                        break;
-                    case "Amazon":
-                        $('#amazonBtn').css({ 'background-color': 'black', "color": "white" });
-                        break;
-                }
-            }
-        }
-    }
+    //                     break;
+    //                 case "Hulu Plus":
+    //                     $('#huluBtn').css({ 'background-color': 'black', "color": "white" });
+    //                     break;
+    //                 case "Disney+":
+    //                     $('#disneyBtn').css({ 'background-color': 'black', "color": "white" });
+    //                     break;
+    //                 case "Amazon":
+    //                     $('#amazonBtn').css({ 'background-color': 'black', "color": "white" });
+    //                     break;
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 
@@ -263,7 +263,7 @@ $('#clearButton').on('click', function () {
 
 // TODO do this to other two
 // TODO get a better placeholder image
-function randomMovies(){
+function randomMovies() {
 
     var randomID;
 
@@ -320,10 +320,10 @@ function randomMovies(){
             // TODO consider getting plot from OMDB instead
             // TODO Consider forcing plot to be a word limit with ... if too long
 
-            var serviceNames=[]
+            var serviceNames = []
 
-            
-            if (response.subscription_web_sources.length===0){
+
+            if (response.subscription_web_sources.length === 0) {
                 $("#randomTitleOne").empty()
 
                 $("#randomTitleOne").append("Still Loading...")
@@ -331,40 +331,55 @@ function randomMovies(){
                 randomMovies()
 
             }
-            else{
+            else {
 
 
-           
-            
 
-            for (i=0; i<response.subscription_web_sources.length; i++){
 
-                serviceNames.push(response.subscription_web_sources[i].display_name)
-                if (i<response.subscription_web_sources.length-1){
-                    serviceNames.push(", ")
+
+                for (i = 0; i < response.subscription_web_sources.length; i++) {
+
+                    serviceNames.push(response.subscription_web_sources[i].display_name)
+                    // if (i<response.subscription_web_sources.length-1){
+                    //     serviceNames.push(", ")
+                    // }
                 }
+
+
+
+                function findCommonElements3(arr1, arr2) {
+                    return arr1.some(item => arr2.includes(item))
+                }
+
+                var subscriptionCheck = findCommonElements3(subscriptionArray, serviceNames)
+                
+                if(subscriptionCheck === false){
+                    console.log("subcheck if");
+                    randomMovies();
+                }
+                else{
+
+                console.log("All service names: ", serviceNames)
+                //TODO make sure movies with NO services aren't returned
+                // TODO consider getting plot from OMDB instead
+                // TODO Consider forcing plot to be a word limit with ... if too long
+
+                $("#randomTitleOne").empty()
+                $("#randomPlotOne").empty()
+                $("#randomServicesOne").empty()
+
+                getOMDBInfo(response.imdb);
+
+                $("#randomTitleOne").append(response.title, " (", response.release_year, ")")
+
+                //$("#randomPlotOne").append("Plot: ", response.overview)
+
+                $("#randomServicesOne").append("Services: ", serviceNames)
+
+                $("#randomImageOne").attr("src", response.poster_240x342)
+
             }
-
-            console.log("All service names: ", serviceNames)
-        //TODO make sure movies with NO services aren't returned
-        // TODO consider getting plot from OMDB instead
-        // TODO Consider forcing plot to be a word limit with ... if too long
-            
-            $("#randomTitleOne").empty()
-            $("#randomPlotOne").empty()
-            $("#randomServicesOne").empty()
-
-            getOMDBInfo(response.imdb);
-
-            $("#randomTitleOne").append(response.title, " (",response.release_year, ")" )
-            
-            //$("#randomPlotOne").append("Plot: ", response.overview)
-
-            $("#randomServicesOne").append("Services: ", serviceNames)
-
-            $("#randomImageOne").attr("src", response.poster_240x342)
-
-             }
+        }
 
 
 
@@ -387,15 +402,15 @@ var FullArray = ['']
 // event listener for STREAMING SEARCH
 // When search button is clicked, the API is called and a list of titles matching the title the user inputted is pulled 
 
-$('#searchSubmitButton').on("click", function() {
-            //  This empy function makes it so only one set of streaming services appears on screen at a time
-            $("#serviceList").empty()
+$('#searchSubmitButton').on("click", function () {
+    //  This empy function makes it so only one set of streaming services appears on screen at a time
+    $("#serviceList").empty()
 
     // This Title variable is the user input
     var Title = $('#titleInput').val()
     // This code is the actual URL, and the title the user inputted will go in it
 
-    var titleURL="https://api-public.guidebox.com/v2/search?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0&type=movie&query=" + Title +  "&field=title"
+    var titleURL = "https://api-public.guidebox.com/v2/search?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0&type=movie&query=" + Title + "&field=title"
 
     // This API call gets all matching titles and their ID numbers
     $.ajax({
@@ -451,8 +466,8 @@ function assignClick(ListTitles) {
         var SelectedTitle = $(this).text()
         var SelectedNumber = (ListTitles.indexOf(SelectedTitle))
 
-    
-           getInfo(FullArray[SelectedNumber].id);
+
+        getInfo(FullArray[SelectedNumber].id);
 
     })
 
@@ -505,7 +520,7 @@ function renderServices(services) {
 }
 
 
-function getOMDBInfo(imdbID){
+function getOMDBInfo(imdbID) {
     var omdbURL = 'https://omdbapi.com/?i=' + imdbID + '&apikey=7968c90e'
 
     $.ajax({
@@ -513,23 +528,23 @@ function getOMDBInfo(imdbID){
         method: 'GET'
     }).then(function (response) {
         var genreString = response.Genre;
-        var genreArray = genreString.split(', ') 
+        var genreArray = genreString.split(', ')
         var imdbPlot = response.Plot;
         var rtScore = response.Ratings[2].Value;
         console.log(rtScore);
-        
 
-        for(i=0;i < genreArray.length; i++){
+
+        for (i = 0; i < genreArray.length; i++) {
             var genreTag = $('<span>');
-        genreTag.addClass("btn btn-sm searchBtn genreBtn")
-        genreTag.text(genreArray[i]);
+            genreTag.addClass("btn btn-sm searchBtn genreBtn")
+            genreTag.text(genreArray[i]);
 
-        $('#randomGenreOne').append(genreTag)
+            $('#randomGenreOne').append(genreTag)
         }
         $('#randomPlotOne').text(imdbPlot);
 
 
-        
+
     })
 
 
