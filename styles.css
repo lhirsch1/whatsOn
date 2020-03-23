@@ -82,12 +82,14 @@ a {
 }
 
 .red{
-    background-color: red;
+    background-color: #343a40;
+    color: white;
     width: 100%;
 }
 
 .blue{
-    background-color: blue;
+    background-color: darkgray;
+    color;
     width: 100%;
 }
 
@@ -163,6 +165,10 @@ span.searchBtn{
 .theater-modal {
     background-color: #343a40;
     text-align: center;
-    margin: 0 auto;
     color: white;
 }
+
+.theaterModalDisplay {
+    background-color: #343a40;
+}
+
