@@ -25,8 +25,8 @@ function getShowtimes() {
     $('#showdata').empty();
     event.preventDefault();
     var date = $('#date').val();
-    var zipCode = $('#zipCode').val();
-    var range = $('#searchRange').val();
+    var zipCode = $('#theaterZipCode').val();
+    var range = $('#theaterSearchRange').val();
     var queryURLShowtimes = "https://data.tmsapi.com/v1.1/movies/showings?startDate=" + date + "&zip=" + zipCode + "&radius=" + range + "&api_key=92rsd8kpdrnkajvyvb42dkug";
     console.log(date);
     $.ajax({

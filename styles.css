@@ -72,11 +72,6 @@ main {
     margin-left: 50px;
 }
 
-.brandName {
-    color: red;
-}
-
-
 a {
    padding-bottom: 2px;
 }
@@ -121,28 +116,14 @@ a {
     padding-bottom: 0;
 }
 
-/* .modalInputs  {
-    background-color: blue;
-     width: 70%;
-    margin: 0 auto;
-    margin-bottom: 1rem;
-    color: white;
-}  */
-
 .inputRow {
     margin-left: 10px;
 }
 
 .modal-footer, .modalSearchButton   {
-    /* background-color: aquamarine; */
-
     color: white;
     padding: 6px 15px 6px 15px;
 }
-
-/* #servicesText {
-    padding-left: 12px;
-} */
 
 span.searchBtn{
 
@@ -157,10 +138,6 @@ span.searchBtn{
     background-color: black;
     color:whitesmoke;
 }
-
-/* .searchInput{
-    width:90%;
-} */
 
 .theater-modal {
     background-color: #343a40;
