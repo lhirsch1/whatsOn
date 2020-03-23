@@ -335,9 +335,9 @@ function randomMovies() {
                 for (i = 0; i < response.subscription_web_sources.length; i++) {
 
                     serviceNames.push(response.subscription_web_sources[i].display_name)
-                    // if (i<response.subscription_web_sources.length-1){
-                    //     serviceNames.push(", ")
-                    // }
+                    if (i<response.subscription_web_sources.length-1){
+                         serviceNames.push(", ")
+                     }
                 }
 
 
