@@ -354,10 +354,11 @@ function randomMovies(){
             $("#randomPlotOne").empty()
             $("#randomServicesOne").empty()
 
+            getOMDBInfo(response.imdb);
 
             $("#randomTitleOne").append(response.title, " (",response.release_year, ")" )
             
-            $("#randomPlotOne").append("Plot: ", response.overview)
+            //$("#randomPlotOne").append("Plot: ", response.overview)
 
             $("#randomServicesOne").append("Services: ", serviceNames)
 
@@ -503,6 +504,36 @@ function renderServices(services) {
     // TODO have a different message if no streaming services are available
 }
 
+
+function getOMDBInfo(imdbID){
+    var omdbURL = 'https://omdbapi.com/?i=' + imdbID + '&apikey=7968c90e'
+
+    $.ajax({
+        url: omdbURL,
+        method: 'GET'
+    }).then(function (response) {
+        var genreString = response.Genre;
+        var genreArray = genreString.split(', ') 
+        var imdbPlot = response.Plot;
+        var rtScore = response.Ratings[2].Value;
+        console.log(rtScore);
+        
+
+        for(i=0;i < genreArray.length; i++){
+            var genreTag = $('<span>');
+        genreTag.addClass("btn btn-sm searchBtn genreBtn")
+        genreTag.text(genreArray[i]);
+
+        $('#randomGenreOne').append(genreTag)
+        }
+        $('#randomPlotOne').text(imdbPlot);
+
+
+        
+    })
+
+
+}
 
 
 
