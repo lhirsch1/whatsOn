@@ -138,94 +138,96 @@ function parseServicesArray() {
     }
     console.log(servicesArray);
     //place current user preferences into the modal
-    // placeUserPrefs();
+    placeUserPrefs();
 }
 
-// function placeUserPrefs() {
-//     userName = localStorage.getItem('userName');
-//     $('#userName').attr('value', userName);
-//     zipCode = localStorage.getItem('zipCode');
-//     $('#zipCode').attr('value', zipCode);
-//     range = localStorage.getItem('range');
-//     $('#searchRange').attr('value', range);
+function placeUserPrefs() {
+    userName = localStorage.getItem('userName');
+    $('#userName').attr('value', userName);
+    zipCode = localStorage.getItem('zipCode');
+    $('#zipCode').attr('value', zipCode);
+    range = localStorage.getItem('range');
+    $('#searchRange').attr('value', range);
 
-//     // for turning genreButtons to black to indicate they are already in user preferences
-//     // var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
-//     // for (let i = 0; i < genreArray.length; i++) {
-//     //     switch (genreArray[i]) {
-//     //         case "Action":
-//     //             $('#actionBtn').css({ 'background-color': 'black', "color": "white" });
-//     //             break;
-//     //         case "Comedy":
-//     //             $('#comedyBtn').css({ 'background-color': 'black', "color": "white" });
-//     //             break;
-//     //         case "Horror":
-//     //             $('#horrorBtn').css({ 'background-color': 'black', "color": "white" });
-//     //             break;
-//     //         case "Drama":
-//     //             $('#dramaBtn').css({ 'background-color': 'black', "color": "white" });
-//     //             break;
-//     //         case "SciFi":
-//     //             $('#scifiBtn').css({ 'background-color': 'black', "color": "white" });
-//     //             break;
-//     //         case "Family":
-//     //             $('#familyBtn').css({ 'background-color': 'black', "color": "white" });
-//     //             break;
-//     //     }
-//     // }
+    // for turning genreButtons to black to indicate they are already in user preferences
+    // var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
+    // for (let i = 0; i < genreArray.length; i++) {
+    //     switch (genreArray[i]) {
+    //         case "Action":
+    //             $('#actionBtn').css({ 'background-color': 'black', "color": "white" });
+    //             break;
+    //         case "Comedy":
+    //             $('#comedyBtn').css({ 'background-color': 'black', "color": "white" });
+    //             break;
+    //         case "Horror":
+    //             $('#horrorBtn').css({ 'background-color': 'black', "color": "white" });
+    //             break;
+    //         case "Drama":
+    //             $('#dramaBtn').css({ 'background-color': 'black', "color": "white" });
+    //             break;
+    //         case "SciFi":
+    //             $('#scifiBtn').css({ 'background-color': 'black', "color": "white" });
+    //             break;
+    //         case "Family":
+    //             $('#familyBtn').css({ 'background-color': 'black', "color": "white" });
+    //             break;
+    //     }
+    // }
     
-//     // make services buttons in modals appear clicked if they are in user preferences
-//     var servicesBtns = ["Netflix", "Hulu Plus", "Disney+", "Amazon"];
-//     for (let i = 0; i < servicesArray.length; i++) {
-//         switch (servicesArray[i]) {
-//             case "Netflix":
-//                 $('#netflixBtn').css({ 'background-color': 'black', "color": "white" });
+    // make services buttons in modals appear clicked if they are in user preferences
+    var servicesBtns = ["Netflix", "Hulu Plus", "Disney+", "Amazon"];
+    for (let i = 0; i < servicesArray.length; i++) {
+        switch (servicesArray[i]) {     
+            case "Netflix":
+                $('#netflixBtn').css({ 'background-color': 'black', "color": "white" });
 
-//     // set buttons for current genres active
-//     // $(".genreBtn").click(function(){
-//     //     if(clicked){
-//     //         $(this).css('background-color', 'red');
-//     //         clicked  = false;
-//     //     } else {
-//     //         $(this).css('background-color', 'blue');
-//     //         clicked  = true;
-//     //     }  
-//     // var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
-//     // for (let i=0; i<genreArray.length; i++) {
-//     //      switch(genreArray[i]) {
-//     //          case "Action":
-//     //             $('#actionBtn').css({'background-color': 'black', "color": "white"});
-//     //             break;
-//     //         case "Comedy":
-//     //             $('#comedyBtn').css({'background-color': 'black', "color": "white"});
-//     //             break; 
-//     //         case "Horror":
-//     //             $('#horrorBtn').css({'background-color': 'black', "color": "white"});
+            // set buttons for current genres active
+            // $(".genreBtn").click(function(){
+            //     if(clicked){
+            //         $(this).css('background-color', 'red');
+            //         clicked  = false;
+            //     } else {
+            //         $(this).css('background-color', 'blue');
+            //         clicked  = true;
+            //     }  
+            var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
+            for (let i=0; i<genreArray.length; i++) {
+                switch(genreArray[i]) {
+                    case "Action":
+                        $('#actionBtn').css({'background-color': 'black', "color": "white"});
+                        break;
+                    case "Comedy":
+                        $('#comedyBtn').css({'background-color': 'black', "color": "white"});
+                        break; 
+                    case "Horror":
+                        $('#horrorBtn').css({'background-color': 'black', "color": "white"});
 
-//     //             break;
-//     //         case "Hulu Plus":
-//     //             $('#huluBtn').css({ 'background-color': 'black', "color": "white" });
-//     //             break;
-//     //         case "Disney+":
-//     //             $('#disneyBtn').css({ 'background-color': 'black', "color": "white" });
-//     //             break;
-//     //         case "Amazon":
-//     //             $('#amazonBtn').css({ 'background-color': 'black', "color": "white" });
-//     //             break;
-//     //     }
-//     // }
-// }
+                        break;
+                    case "Hulu Plus":
+                        $('#huluBtn').css({ 'background-color': 'black', "color": "white" });
+                        break;
+                    case "Disney+":
+                        $('#disneyBtn').css({ 'background-color': 'black', "color": "white" });
+                        break;
+                    case "Amazon":
+                        $('#amazonBtn').css({ 'background-color': 'black', "color": "white" });
+                        break;
+                }
+            }
+        }
+    }
+}
 
 
-//  function to confirm the correct data going to local storage.  NOT FOR PRODUCTION
-// function renderUserPrefs() {
-//     // render current user preferences to the screen
-//     console.log('Your user name:  ' + userName);
-//     console.log('Your zip code is:  ' + zipCode);
-//     console.log('Your search range is:  ' + range);
-//     // $('#userGenres').text('Your favorite genres are:  ' + genreArray);
-//     console.log('Your favorite services are:  ' + servicesArray);
-// }
+// function to confirm the correct data going to local storage.  NOT FOR PRODUCTION
+function renderUserPrefs() {
+    // render current user preferences to the screen
+    console.log('Your user name:  ' + userName);
+    console.log('Your zip code is:  ' + zipCode);
+    console.log('Your search range is:  ' + range);
+    // $('#userGenres').text('Your favorite genres are:  ' + genreArray);
+    console.log('Your favorite services are:  ' + servicesArray);
+}
 
 //  END OF JOHN'S FUNCTIONS
 
