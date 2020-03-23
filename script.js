@@ -8,7 +8,7 @@ var genreContainer = $('.genreContainer');
 var servicesString = "";
 // var genreString = "";
 // var genreArray = [];
-var servicesArray = [];
+// var servicesArray = [];
 
 // John's variables
 var userName = $('#userName');
@@ -138,83 +138,83 @@ function parseServicesArray() {
     }
     console.log(servicesArray);
     //place current user preferences into the modal
-    placeUserPrefs();
+    // placeUserPrefs();
 }
 
-function placeUserPrefs() {
-    userName = localStorage.getItem('userName');
-    $('#userName').attr('value', userName);
-    zipCode = localStorage.getItem('zipCode');
-    $('#zipCode').attr('value', zipCode);
-    range = localStorage.getItem('range');
-    $('#searchRange').attr('value', range);
+// function placeUserPrefs() {
+//     userName = localStorage.getItem('userName');
+//     $('#userName').attr('value', userName);
+//     zipCode = localStorage.getItem('zipCode');
+//     $('#zipCode').attr('value', zipCode);
+//     range = localStorage.getItem('range');
+//     $('#searchRange').attr('value', range);
 
-    // for turning genreButtons to black to indicate they are already in user preferences
-    // var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
-    // for (let i = 0; i < genreArray.length; i++) {
-    //     switch (genreArray[i]) {
-    //         case "Action":
-    //             $('#actionBtn').css({ 'background-color': 'black', "color": "white" });
-    //             break;
-    //         case "Comedy":
-    //             $('#comedyBtn').css({ 'background-color': 'black', "color": "white" });
-    //             break;
-    //         case "Horror":
-    //             $('#horrorBtn').css({ 'background-color': 'black', "color": "white" });
-    //             break;
-    //         case "Drama":
-    //             $('#dramaBtn').css({ 'background-color': 'black', "color": "white" });
-    //             break;
-    //         case "SciFi":
-    //             $('#scifiBtn').css({ 'background-color': 'black', "color": "white" });
-    //             break;
-    //         case "Family":
-    //             $('#familyBtn').css({ 'background-color': 'black', "color": "white" });
-    //             break;
-    //     }
-    // }
+//     // for turning genreButtons to black to indicate they are already in user preferences
+//     // var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
+//     // for (let i = 0; i < genreArray.length; i++) {
+//     //     switch (genreArray[i]) {
+//     //         case "Action":
+//     //             $('#actionBtn').css({ 'background-color': 'black', "color": "white" });
+//     //             break;
+//     //         case "Comedy":
+//     //             $('#comedyBtn').css({ 'background-color': 'black', "color": "white" });
+//     //             break;
+//     //         case "Horror":
+//     //             $('#horrorBtn').css({ 'background-color': 'black', "color": "white" });
+//     //             break;
+//     //         case "Drama":
+//     //             $('#dramaBtn').css({ 'background-color': 'black', "color": "white" });
+//     //             break;
+//     //         case "SciFi":
+//     //             $('#scifiBtn').css({ 'background-color': 'black', "color": "white" });
+//     //             break;
+//     //         case "Family":
+//     //             $('#familyBtn').css({ 'background-color': 'black', "color": "white" });
+//     //             break;
+//     //     }
+//     // }
     
-    // make services buttons in modals appear clicked if they are in user preferences
-    var servicesBtns = ["Netflix", "Hulu Plus", "Disney+", "Amazon"];
-    for (let i = 0; i < servicesArray.length; i++) {
-        switch (servicesArray[i]) {
-            case "Netflix":
-                $('#netflixBtn').css({ 'background-color': 'black', "color": "white" });
+//     // make services buttons in modals appear clicked if they are in user preferences
+//     var servicesBtns = ["Netflix", "Hulu Plus", "Disney+", "Amazon"];
+//     for (let i = 0; i < servicesArray.length; i++) {
+//         switch (servicesArray[i]) {
+//             case "Netflix":
+//                 $('#netflixBtn').css({ 'background-color': 'black', "color": "white" });
 
-    // set buttons for current genres active
-    // $(".genreBtn").click(function(){
-    //     if(clicked){
-    //         $(this).css('background-color', 'red');
-    //         clicked  = false;
-    //     } else {
-    //         $(this).css('background-color', 'blue');
-    //         clicked  = true;
-    //     }  
-    var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
-    for (let i=0; i<genreArray.length; i++) {
-         switch(genreArray[i]) {
-             case "Action":
-                $('#actionBtn').css({'background-color': 'black', "color": "white"});
-                break;
-            case "Comedy":
-                $('#comedyBtn').css({'background-color': 'black', "color": "white"});
-                break; 
-            case "Horror":
-                $('#horrorBtn').css({'background-color': 'black', "color": "white"});
+//     // set buttons for current genres active
+//     // $(".genreBtn").click(function(){
+//     //     if(clicked){
+//     //         $(this).css('background-color', 'red');
+//     //         clicked  = false;
+//     //     } else {
+//     //         $(this).css('background-color', 'blue');
+//     //         clicked  = true;
+//     //     }  
+//     // var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
+//     // for (let i=0; i<genreArray.length; i++) {
+//     //      switch(genreArray[i]) {
+//     //          case "Action":
+//     //             $('#actionBtn').css({'background-color': 'black', "color": "white"});
+//     //             break;
+//     //         case "Comedy":
+//     //             $('#comedyBtn').css({'background-color': 'black', "color": "white"});
+//     //             break; 
+//     //         case "Horror":
+//     //             $('#horrorBtn').css({'background-color': 'black', "color": "white"});
 
-                break;
-            case "Hulu Plus":
-                $('#huluBtn').css({ 'background-color': 'black', "color": "white" });
-                break;
-            case "Disney+":
-                $('#disneyBtn').css({ 'background-color': 'black', "color": "white" });
-                break;
-            case "Amazon":
-                $('#amazonBtn').css({ 'background-color': 'black', "color": "white" });
-                break;
-        }
-    }
-}
+//     //             break;
+//     //         case "Hulu Plus":
+//     //             $('#huluBtn').css({ 'background-color': 'black', "color": "white" });
+//     //             break;
+//     //         case "Disney+":
+//     //             $('#disneyBtn').css({ 'background-color': 'black', "color": "white" });
+//     //             break;
+//     //         case "Amazon":
+//     //             $('#amazonBtn').css({ 'background-color': 'black', "color": "white" });
+//     //             break;
+//     //     }
+//     // }
+// }
 
 
 //  function to confirm the correct data going to local storage.  NOT FOR PRODUCTION
@@ -241,11 +241,6 @@ $('#getUserInfo').on('click', openUserPrefsModal);
 $('#saveButton').on('click', saveUserInfo);
 // Clear local storage
 $('#clearButton').on('click', function () {
-    localStorage.clear();
-})
-
-// Clear local storage
-$('#clearButton').on('click', function() {
     localStorage.clear();
 })
 
@@ -278,7 +273,7 @@ function randomMovies(){
     // start first ajax
     $.ajax({
 
-        url: "https://api-public.guidebox.com/v2/movies?limit=250&api_key=3a2404e733d5da2c97335758c7babd525bf6ede0" ,
+        url: "https://api-public.guidebox.com/v2/movies?limit=250&api_key=3a2404e733d5da2c97335758c7babd525bf6ede0",
 
         method: 'GET'
         // and first ajax and start first "then"
@@ -421,34 +416,6 @@ $('#searchSubmitButton').on("click", function() {
     //This ends the event listener's callback function
 })
 
-// event listener for THEATER SEARCH
-// When search button is clicked, the API is called and a list of titles matching the title the user inputted is pulled 
-$('#searchSubmitButton').on("click", function () {
-    // This Title variable is the user input
-    var Title = $('#titleInput').val()
-    // This code is the actual URL, and the title the user inputted will go in it
-
-    var titleURL="https://api-public.guidebox.com/v2/search?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0&type=movie&query=" + Title +  "&field=title"
-
-    // This API call gets all matching titles and their ID numbers
-    $.ajax({
-        url: titleURL,
-        method: 'GET'
-    }).then(function (response) {
-        // This List Titles variable is made to hold each indicidual title, which are placed in it through a for loop
-        var ListTitles = []
-        for (i = 0; i < response.results.length; i++) {
-            ListTitles.push(response.results[i].title)
-        }
-
-        // we set our global variable to our results, because we'll need them later,
-        FullArray = response.results
-        // and we call the renderTitles() function, passing in out list of titles
-        renderTitles(ListTitles)
-    })
-    //This ends the event listener's callback function
-})
-
 // This function takes the list of titles, and renders them all to the page in the form of buttons
 function renderTitles(ListTitles) {
 
@@ -484,14 +451,8 @@ function assignClick(ListTitles) {
         var SelectedTitle = $(this).text()
         var SelectedNumber = (ListTitles.indexOf(SelectedTitle))
 
-    // This function will call the API, using the desired film's ID Number, will create  "services" array whcih is a list of streaming services that stream the selected film,
-    // and it will call the renderServices function, passing in that list of services
-    function getInfo(movieID) {
-        // this URL calls the api with the movie's ID, which returns more detailed info
-        var serviceURL = "https://api-public.guidebox.com/v2/movies/" + movieID + "?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0"
-
-
-        getInfo(FullArray[SelectedNumber].id);
+    
+           getInfo(FullArray[SelectedNumber].id);
 
     })
 
@@ -501,7 +462,7 @@ function assignClick(ListTitles) {
 // and it will call the renderServices function, passing in that list of services
 function getInfo(movieID) {
     // this URL calls the api with the movie's ID, which returns more detailed info
-    var serviceURL = "https://api-public.guidebox.com/v2/movies/" + movieID + "?api_key=9ac23dfd7609c8b90ee801cff57a64139f7f8861"
+    var serviceURL = "https://api-public.guidebox.com/v2/movies/" + movieID + "?api_key=3a2404e733d5da2c97335758c7babd525bf6ede0"
 
     $.ajax({
         url: serviceURL,
@@ -521,18 +482,6 @@ function getInfo(movieID) {
         renderServices(services)
     })
 }
-
-        //  This empy function makes it so only one set of streaming services appears on screen at a time
-        $("#serviceList").empty()
-        //  This puts the streaming services on the page
-
-        if (services.length===0){
-
-            ListServices="This title is currently not on any known streaming service."
-        }
-        
-        $("#serviceList").append(ListServices)
-
 
 // This function puts the streaming services on the screen
 function renderServices(services) {
@@ -581,16 +530,6 @@ $('.searchBtn').on('click', function () {
         $(this).addClass('searchBtnClicked');
         //removes unclicked styling
         $(this).removeClass('searchBtn');
-    }
-})
-//function is run if user wants to search TV shows
-$('#tvBtn').on('click', function () {
-    var thisText = $(this).text();
-    //if tvBtn has already been selected
-    if ($(this).hasClass('searchBtnClicked')) {
-        $('#movieBtn').removeClass('searchBtnClicked');
-        format = 'tvshow';
-        genreContainer.show();
     }
 })
 
