@@ -103,6 +103,7 @@ function checkUserPrefs() {
         zipCode = localStorage.getItem('zipCode');
         // parseGenreArray();
         parseServicesArray();
+        
        
     }
 }
@@ -127,14 +128,15 @@ function checkUserPrefs() {
 function parseServicesArray() {
     // read in genres from local storage, save to string
     servicesString = localStorage.getItem('services');
-    if (servicesString === null) {
-        servicesArray = [];
+    if (subscriptionArray === null) {
+        subscriptionArray = [];
     } else {
         // convert the string from local storage into genreArray[
-        servicesArray = servicesString.split(",");
-        localStorage.setItem('services', servicesArray);
+            subscriptionArray = servicesString.split(",");
+        localStorage.setItem('services', subscriptionArray);
+        randomMovies();
     }
-    console.log(servicesArray);
+    console.log(subscriptionArray);
     //place current user preferences into the modal
     placeUserPrefs();
 }
@@ -146,73 +148,11 @@ function placeUserPrefs() {
     $('#zipCode').attr('value', zipCode);
     
 
-    // for turning genreButtons to black to indicate they are already in user preferences
-    // var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
-    // for (let i = 0; i < genreArray.length; i++) {
-    //     switch (genreArray[i]) {
-    //         case "Action":
-    //             $('#actionBtn').css({ 'background-color': 'black', "color": "white" });
-    //             break;
-    //         case "Comedy":
-    //             $('#comedyBtn').css({ 'background-color': 'black', "color": "white" });
-    //             break;
-    //         case "Horror":
-    //             $('#horrorBtn').css({ 'background-color': 'black', "color": "white" });
-    //             break;
-    //         case "Drama":
-    //             $('#dramaBtn').css({ 'background-color': 'black', "color": "white" });
-    //             break;
-    //         case "SciFi":
-    //             $('#scifiBtn').css({ 'background-color': 'black', "color": "white" });
-    //             break;
-    //         case "Family":
-    //             $('#familyBtn').css({ 'background-color': 'black', "color": "white" });
-    //             break;
-    //     }
-    // }
+   
 
     // make services buttons in modals appear clicked if they are in user preferences
     var servicesBtns = ["Netflix", "Hulu Plus", "Disney+", "Amazon"];
-    // for (let i = 0; i < servicesArray.length; i++) {
-    //     switch (servicesArray[i]) {     
-    //         case "Netflix":
-    //             $('#netflixBtn').css({ 'background-color': 'black', "color": "white" });
 
-    //         // set buttons for current genres active
-    //         // $(".genreBtn").click(function(){
-    //         //     if(clicked){
-    //         //         $(this).css('background-color', 'red');
-    //         //         clicked  = false;
-    //         //     } else {
-    //         //         $(this).css('background-color', 'blue');
-    //         //         clicked  = true;
-    //         //     }  
-    //         var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
-    //         for (let i=0; i<genreArray.length; i++) {
-    //             switch(genreArray[i]) {
-    //                 case "Action":
-    //                     $('#actionBtn').css({'background-color': 'black', "color": "white"});
-    //                     break;
-    //                 case "Comedy":
-    //                     $('#comedyBtn').css({'background-color': 'black', "color": "white"});
-    //                     break; 
-    //                 case "Horror":
-    //                     $('#horrorBtn').css({'background-color': 'black', "color": "white"});
-
-    //                     break;
-    //                 case "Hulu Plus":
-    //                     $('#huluBtn').css({ 'background-color': 'black', "color": "white" });
-    //                     break;
-    //                 case "Disney+":
-    //                     $('#disneyBtn').css({ 'background-color': 'black', "color": "white" });
-    //                     break;
-    //                 case "Amazon":
-    //                     $('#amazonBtn').css({ 'background-color': 'black', "color": "white" });
-    //                     break;
-    //             }
-    //         }
-    //     }
-    // }
 }
 
 
@@ -223,7 +163,7 @@ function placeUserPrefs() {
 
 /////////    CODE TO RUN ON LOAD    //////
 //  parseGenreArray();
-parseServicesArray();
+//parseServicesArray();
 checkUserPrefs();
 
 // JOHN'S EVENT LISTENERS
