@@ -160,3 +160,9 @@ span.searchBtn{
     width:90%;
 } */
 
+.theater-modal {
+    background-color: #343a40;
+    text-align: center;
+    margin: 0 auto;
+    color: white;
+}

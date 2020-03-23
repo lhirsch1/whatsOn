@@ -22,6 +22,8 @@ $('#theaterSearchButton').on('click', function () {
 });
 
 function getShowtimes() {
+
+    $('#showdata').empty();
     event.preventDefault();
     var date = $('#date').val();
     var zipCode = $('#zipCode').val();
@@ -37,25 +39,20 @@ function getShowtimes() {
         for (i = 0; i < 10; i++) {
 
             var showtime = response[i].showtimes[i].dateTime;
-            console.log(new Date(showtime))
+            // console.log(new Date(showtime))
 
             $('#showdata').append(response[i].title + "<br>")
             $('#showdata').append(response[i].showtimes[i].theatre.name + "<br>")
             $('#showdata').append(new Date(showtime) + "<br>");
             // console.log(response[i].showtimes) 
 
-            // for (y = 0; y <10; y++) {
-            // }
-            console.log(response[i].showtimes[i].theatre) //returns the theatres 
-            console.log(new Date(date)) //returns actual showtime
+           
+            // console.log(response[i].showtimes[i].theatre) //returns the theatres 
+            // console.log(new Date(date)) //returns actual showtime
         }
 
     })
 }
-
-// START OF JOHN'S STUFF
-// Variables -> at the top
-
 
 // JOHN'S FUNCTIONS
 // Open the modal to get user preferences
