@@ -216,7 +216,7 @@ function randomMovies(){
        
         var everyID=[];
         for (i=0; i<response.results.length; i++){
-        // console.log("full list of small info ", response.results[i].id)
+         console.log("full list of small info ", response.results[i].id)
             everyID.push(response.results[i].id)
 
         }
@@ -465,11 +465,6 @@ function assignClick(ListTitles){
 
 
 
-
-
-
-
-
 //function changes css of search buttons when clicked
 $('.searchBtn').on('click', function () {
     //checks if search button has been clicked already
@@ -574,3 +569,32 @@ $('.subscriptionBtn').on('click', function () {
 //     actor = $('#actorInput').val();
 //     console.log('format = '  + format + ' title = ' + title +  ' actor = ' + actor + ' genres = ' + genreArray + ' subscriptions = ' + subscriptionArray )
 // });
+
+//function pulls data from OMDB API
+var imdbID = "tt0096895"
+function getOMDBInfo(imdbID) {
+    var omdbURL = 'https://omdbapi.com/?i=' + imdbID + '&apikey=7968c90e'
+
+    $.ajax({
+        url: omdbURL,
+        method: 'GET'
+    }).then(function (response) {
+        var genreString = response.Genre;
+        var genreArray = genreString.split(', ')
+        var imdbPlot = response.Plot;
+        var rtScore = response.Ratings[2].Value;
+        console.log(rtScore);
+
+
+        for (i = 0; i < genreArray.length; i++) {
+            var genreTag = $('<span>');
+            genreTag.addClass("btn btn-sm searchBtn genreBtn")
+            genreTag.text(genreArray[i]);
+
+            $('#randomGenreOne').append(genreTag)
+        }
+        $('#randomPlotOne').text(imdbPlot);
+    })
+}
+
+//getOMDBInfo(imdbID)
