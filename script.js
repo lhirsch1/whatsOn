@@ -70,8 +70,8 @@ function saveUserInfo() {
     console.log(subscriptionArray);
     userName = $('#userName').val();
     zipCode = $('#zipCode').val();
-    
-    
+
+
     // console.log('genreArray  ' + genreArray);
     // only update local storage if something is entered
     if (userName !== "") {
@@ -80,7 +80,7 @@ function saveUserInfo() {
     if (zipCode !== "") {
         localStorage.setItem('zipCode', zipCode);
     }
-    
+
     // if (genreArray.length !== 0) {
     //     localStorage.setItem('genres', genreArray);
     // }
@@ -89,7 +89,7 @@ function saveUserInfo() {
     }
     // console.log("After revision")
     randomMovies();
-   
+
 }
 
 // open user prefs modal if none are stored in local storage
@@ -103,8 +103,8 @@ function checkUserPrefs() {
         zipCode = localStorage.getItem('zipCode');
         // parseGenreArray();
         parseServicesArray();
-        
-       
+
+
     }
 }
 
@@ -132,7 +132,8 @@ function parseServicesArray() {
         subscriptionArray = [];
     } else {
         // convert the string from local storage into genreArray[
-            subscriptionArray = servicesString.split(",");
+        //subscriptionArray =[];
+        subscriptionArray = servicesString.split(",");
         localStorage.setItem('services', subscriptionArray);
         randomMovies();
     }
@@ -146,9 +147,9 @@ function placeUserPrefs() {
     $('#userName').attr('value', userName);
     zipCode = localStorage.getItem('zipCode');
     $('#zipCode').attr('value', zipCode);
-    
 
-   
+
+
 
     // make services buttons in modals appear clicked if they are in user preferences
     var servicesBtns = ["Netflix", "Hulu Plus", "Disney+", "Amazon"];
@@ -173,8 +174,9 @@ $('#getUserInfo').on('click', openUserPrefsModal);
 $('#saveButton').on('click', saveUserInfo);
 // Clear local storage
 $('#clearButton').on('click', function () {
+    subscriptionArray = [];
     localStorage.clear();
-    
+
 
 })
 
@@ -275,9 +277,9 @@ function randomMovies() {
                 for (i = 0; i < response.subscription_web_sources.length; i++) {
 
                     serviceNames.push(response.subscription_web_sources[i].display_name)
-                    if (i<response.subscription_web_sources.length-1){
-                         serviceNames.push(", ")
-                     }
+                    if (i < response.subscription_web_sources.length - 1) {
+                        serviceNames.push(", ")
+                    }
                 }
 
 
@@ -287,34 +289,34 @@ function randomMovies() {
                 }
 
                 var subscriptionCheck = findCommonElements3(subscriptionArray, serviceNames)
-                
-                if(subscriptionCheck === false){
+
+                if (subscriptionCheck === false) {
                     console.log("subcheck if");
                     randomMovies();
                 }
-                else{
+                else {
 
-                console.log("All service names: ", serviceNames)
-                //TODO make sure movies with NO services aren't returned
-                // TODO consider getting plot from OMDB instead
-                // TODO Consider forcing plot to be a word limit with ... if too long
+                    console.log("All service names: ", serviceNames)
+                    //TODO make sure movies with NO services aren't returned
+                    // TODO consider getting plot from OMDB instead
+                    // TODO Consider forcing plot to be a word limit with ... if too long
 
-                $("#randomTitleOne").empty()
-                $("#randomPlotOne").empty()
-                $("#randomServicesOne").empty()
+                    $("#randomTitleOne").empty()
+                    $("#randomPlotOne").empty()
+                    $("#randomServicesOne").empty()
 
-                getOMDBInfo(response.imdb);
+                    getOMDBInfo(response.imdb);
 
-                $("#randomTitleOne").append(response.title, " (", response.release_year, ")")
+                    $("#randomTitleOne").append(response.title, " (", response.release_year, ")")
 
-                //$("#randomPlotOne").append("Plot: ", response.overview)
+                    //$("#randomPlotOne").append("Plot: ", response.overview)
 
-                $("#randomServicesOne").append("Services: ", serviceNames)
+                    $("#randomServicesOne").append("Services: ", serviceNames)
 
-                $("#randomImageOne").attr("src", response.poster_240x342)
+                    $("#randomImageOne").attr("src", response.poster_240x342)
 
+                }
             }
-        }
 
 
 
@@ -438,7 +440,7 @@ function renderServices(services) {
 
     ListServices = ["This title is on: "]
 
-    if(services.length ===0){
+    if (services.length === 0) {
         ListServices = 'This title is not on any streaming services';
     }
     for (i = 0; i < services.length; i++) {
@@ -574,7 +576,10 @@ $('.subscriptionBtn').on('click', function () {
     var thisText = $(this).text();
     if ($(this).hasClass('searchBtnClicked')) {
         //adds subscription service to array
-        subscriptionArray.push(thisText);
+        // subscriptionArray.push(thisText);
+        if(subscriptionArray.indexOf(thisIndex)===-1){
+            subscriptionArray.push(thisText);
+        }
     }
     else {
         //take out of array
