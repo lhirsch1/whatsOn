@@ -2,8 +2,7 @@
 // Lukas' variables
 var format = 'tvshow';
 var title = '';
-var actor = '';
-var subscriptionArray = ['Netflix', 'Hulu'];
+var subscriptionArray = [];
 var genreContainer = $('.genreContainer');
 var servicesString = "";
 // var genreString = "";
@@ -29,7 +28,7 @@ function getShowtimes() {
     var zipCode = $('#zipCode').val();
     var range = $('#searchRange').val();
     var queryURLShowtimes = "https://data.tmsapi.com/v1.1/movies/showings?startDate=" + date + "&zip=" + zipCode + "&radius=" + range + "&api_key=92rsd8kpdrnkajvyvb42dkug";
-
+    console.log(date);
     $.ajax({
         url: queryURLShowtimes,
         method: "GET"
@@ -49,6 +48,9 @@ function getShowtimes() {
 
             // console.log(response[i].showtimes[i].theatre) //returns the theatres 
             // console.log(new Date(date)) //returns actual showtime
+
+            //TODO if no showtimes tell user
+            //TODO by default fill date with today's date
         }
 
     })
@@ -68,7 +70,8 @@ function saveUserInfo() {
     console.log(subscriptionArray);
     userName = $('#userName').val();
     zipCode = $('#zipCode').val();
-    range = $('#searchRange').val();
+    
+    
     // console.log('genreArray  ' + genreArray);
     // only update local storage if something is entered
     if (userName !== "") {
@@ -77,17 +80,16 @@ function saveUserInfo() {
     if (zipCode !== "") {
         localStorage.setItem('zipCode', zipCode);
     }
-    if (range !== "") {
-        localStorage.setItem('range', range);
-    }
+    
     // if (genreArray.length !== 0) {
     //     localStorage.setItem('genres', genreArray);
     // }
-    if (servicesArray.length !== 0) {
-        localStorage.setItem('services', servicesArray);
+    if (subscriptionArray.length !== 0) {
+        localStorage.setItem('services', subscriptionArray);
     }
     // console.log("After revision")
-    // renderUserPrefs();
+    randomMovies();
+   
 }
 
 // open user prefs modal if none are stored in local storage
@@ -99,10 +101,9 @@ function checkUserPrefs() {
         // retrieve user prefs from local storage
         userName = localStorage.getItem('userName');
         zipCode = localStorage.getItem('zipCode');
-        range = localStorage.getItem('range');
         // parseGenreArray();
         parseServicesArray();
-        // renderUserPrefs();
+       
     }
 }
 
@@ -143,8 +144,7 @@ function placeUserPrefs() {
     $('#userName').attr('value', userName);
     zipCode = localStorage.getItem('zipCode');
     $('#zipCode').attr('value', zipCode);
-    range = localStorage.getItem('range');
-    $('#searchRange').attr('value', range);
+    
 
     // for turning genreButtons to black to indicate they are already in user preferences
     // var genreBtns = ["Action", "Comedy", "Horror", "Drama", "SciFi", "Family"];
@@ -217,14 +217,7 @@ function placeUserPrefs() {
 
 
 // function to confirm the correct data going to local storage.  NOT FOR PRODUCTION
-function renderUserPrefs() {
-    // render current user preferences to the screen
-    console.log('Your user name:  ' + userName);
-    console.log('Your zip code is:  ' + zipCode);
-    console.log('Your search range is:  ' + range);
-    // $('#userGenres').text('Your favorite genres are:  ' + genreArray);
-    console.log('Your favorite services are:  ' + servicesArray);
-}
+
 
 //  END OF JOHN'S FUNCTIONS
 
@@ -241,6 +234,8 @@ $('#saveButton').on('click', saveUserInfo);
 // Clear local storage
 $('#clearButton').on('click', function () {
     localStorage.clear();
+    
+
 })
 
 // END OF JOHN'S EVENT LISTENERS
@@ -393,7 +388,7 @@ function randomMovies() {
     // end function
 }
 
-randomMovies();
+//randomMovies();
 
 
 // This creates a GLOBAL blank array
@@ -503,6 +498,9 @@ function renderServices(services) {
 
     ListServices = ["This title is on: "]
 
+    if(services.length ===0){
+        ListServices = 'This title is not on any streaming services';
+    }
     for (i = 0; i < services.length; i++) {
         ListServices.push(services[i])
 
@@ -646,12 +644,4 @@ $('.subscriptionBtn').on('click', function () {
 })
 
 
-//search form submit button listener for STREAMING SEARCH
-// $('.searchForm').submit(function(e) {
-//     e.preventDefault();
-//     //holds user input for title and actor
-//     //may have to put in lowercase for api
-//     title = $('#titleInput').val();
-//     actor = $('#actorInput').val();
-//     console.log('format = '  + format + ' title = ' + title +  ' actor = ' + actor + ' genres = ' + genreArray + ' subscriptions = ' + subscriptionArray )
-// });
+
